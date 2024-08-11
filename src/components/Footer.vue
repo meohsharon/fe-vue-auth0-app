@@ -58,7 +58,7 @@ const navigation = [
   },
   {
     name: "X",
-    href: "#",
+    href: "https://x.com/meohworld",
     icon: defineComponent({
       render: () =>
         h("svg", { fill: "currentColor", viewBox: "0 0 24 24" }, [
@@ -70,7 +70,7 @@ const navigation = [
   },
   {
     name: "GitHub",
-    href: "#",
+    href: "https://github.com/meohsharon",
     icon: defineComponent({
       render: () =>
         h("svg", { fill: "currentColor", viewBox: "0 0 24 24" }, [
