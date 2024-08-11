@@ -1,45 +1,45 @@
 <template>
   <div class="snap-x flex item-center pb-12">
-    <div class="justify-between rounded p-4">
+    <div class="justify-between rounded p-4 m-1 border border-slate-300">
       <img
-        class="inline-block w-64 rounded-full"
-        src="@assets/avatars/jpg/jpg/1.jpg"
+        class="inline-block w-64 border border-slate-300"
+        src="@assets/avatars/png/1.png"
         alt="1"
         @click="handleLogin(1)"
       />
     </div>
 
-    <div class="justify-between rounded p-4">
+    <div class="justify-between rounded p-4 m-1 border border-slate-300">
       <img
-        class="inline-block w-64 rounded-full"
-        src="@assets/avatars/jpg/jpg/2.jpg"
+        class="inline-block w-64 border border-slate-300"
+        src="@assets/avatars/png/2.png"
         alt="2"
         @click="handleLogin(2)"
       />
     </div>
 
-    <div class="justify-between rounded p-4">
+    <div class="justify-between rounded p-4 m-1 border border-slate-300">
       <img
-        class="inline-block w-64 rounded-full"
-        src="@assets/avatars/jpg/jpg/3.jpg"
+        class="inline-block w-64 border border-slate-300"
+        src="@assets/avatars/png/3.png"
         alt="3"
         @click="handleLogin(3)"
       />
     </div>
 
-    <div class="justify-between rounded p-4">
+    <div class="justify-between rounded p-4 m-1 border border-slate-300">
       <img
-        class="inline-block w-64 rounded-full"
-        src="@assets/avatars/jpg/jpg/4.jpg"
+        class="inline-block w-64 border border-slate-300"
+        src="@assets/avatars/png/4.png"
         alt="4"
         @click="handleLogin(4)"
       />
     </div>
 
-    <div class="justify-between rounded p-4">
+    <div class="justify-between rounded p-4 m-1 border border-slate-300">
       <img
-        class="inline-block w-64 rounded-full"
-        src="@assets/avatars/jpg/jpg/5.jpg"
+        class="inline-block w-64 border border-slate-300"
+        src="@assets/avatars/png/5.png"
         alt="5"
         @click="handleLogin(5)"
       />

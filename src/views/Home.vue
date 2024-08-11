@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import Avatar from "@components/Avatar.vue";
+import Avatar from "@components/AvatarRectanglePng.vue";
 
 const { user, isLoading } = useAuth0();
 </script>

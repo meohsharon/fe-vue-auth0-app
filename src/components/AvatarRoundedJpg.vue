@@ -14,5 +14,6 @@
 import { useAuth0 } from "@auth0/auth0-vue";
 
 const { user } = useAuth0();
-const avatarSrc = new URL(`/src/assets/img/avatars/${user?.value.avatar}.jpg`, import.meta.url).href;
+console.log(user.value)
+const avatarSrc = new URL(`/src/assets/avatars/jpg/${user?.value.avatar}.jpg`, import.meta.url).href;
 </script>

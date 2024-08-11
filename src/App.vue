@@ -4,7 +4,7 @@
       <GlobalHeader />
     </header>
 
-    <div class="flex-grow">
+    <div class="flex-grow h-full">
       <main>
         <router-view v-if="!isLoading" />
       </main>
