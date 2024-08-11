@@ -2,7 +2,7 @@
   <div class="flex p-4 items-center justify-between bg-indigo-800 rounded">
     <!-- LEFT -->
     <div class="flex items-center">
-      <img class="ml-8 h-12" src="../assets/img/logo-small.ico" alt="MeOH" />
+      <img class="ml-8 h-12" src="@assets/img/logo-small.ico" alt="MeOH" />
       <div>
         <span class="text-white text-xl ml-4">Welcome to MeÖH!</span>
       </div>

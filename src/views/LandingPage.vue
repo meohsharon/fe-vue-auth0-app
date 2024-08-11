@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center px-6 lg:px-8 py-6 sm:py-32">
     <img
       class="mt-4 h-auto max-w-full"
-      src="../assets/img/logo-small.ico"
+      src="@assets/img/logo-small.ico"
       alt="MeOH Mission and Vision"
     />
     <h2
