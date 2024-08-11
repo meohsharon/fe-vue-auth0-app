@@ -3,8 +3,15 @@
     <img
       class="mt-4 h-auto max-w-full"
       src="@assets/img/logo-small.ico"
-      alt="MeOH Mission and Vision"
+      alt="MeOH Logo"
     />
+
+    <img
+      v-if=false
+      src="@assets/img/auth0-logo.png"
+      alt="Hidden Image for Auth0 Login"
+    />
+
     <h2
       class="mb-16 font-light tracking-tight text-xl sm:text-xl text-slate-600 font-mono"
     >
