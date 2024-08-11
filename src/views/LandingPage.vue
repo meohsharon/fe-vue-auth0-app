@@ -1,21 +1,31 @@
 <template>
-  <div class="flex flex-col items-center px-6 lg:px-8 py-6 sm:py-32 ">
+  <div class="flex flex-col items-center px-6 lg:px-8 py-6 sm:py-32">
     <img
       class="mt-4 h-auto max-w-full"
       src="../assets/img/logo-small.ico"
       alt="MeOH Mission and Vision"
     />
-    <h2 class="mb-16 font-light tracking-tight text-xl sm:text-xl text-slate-600 font-mono">
+    <h2
+      class="mb-16 font-light tracking-tight text-xl sm:text-xl text-slate-600 font-mono"
+    >
       Bridge between electron and molecule
     </h2>
 
-    <LoginButtonBig v-if="!isAuthenticated" />
+    <div v-if="!isAuthenticated" class="flex flex-col items-center">
+      <h2 class="mt-32 mb-8 font-medium text-xl sm:text-xl">
+        Click on an Avatar to Log In
+      </h2>
+      <LoginWithAvatars />
+
+      <!-- <LoginButtonBig /> -->
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import LoginButtonBig from "@components/identity/LoginButtonBig.vue";
+import LoginWithAvatars from "@components/identity/LoginWithAvatars.vue";
+// import LoginButtonBig from "@components/identity/LoginButtonBig.vue";
 
 const { isAuthenticated } = useAuth0();
 </script>
