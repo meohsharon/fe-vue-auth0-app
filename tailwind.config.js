@@ -8,7 +8,13 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
+      fontFamily: {
+        bruno: ["Bruno Ace"], // https://fonts.google.com/specimen/Bruno+Ace
+        jersey: ["Jersey 10 Charted", "sans-serif"], // doesnt work      
+        audiowide: ["Audiowide", "sans-serif"], // https://fonts.google.com/specimen/Audiowide?classification=Display&stroke=Sans+Serif
+        orbitron: ["Orbitron"], // https://fonts.google.com/specimen/Orbitron?classification=Display&stroke=Sans+Serif
+      },
+      backgroundImage: { // doesnt work
         "meoh-logo": "url('./src/assets/img/meoh.jpeg')",
         "meoh-icon": "url('./src/assets/img/logo-small.ico')",
       },

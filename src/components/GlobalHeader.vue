@@ -1,10 +1,10 @@
 <template>
-  <div class="flex p-4 items-center justify-between bg-indigo-800 rounded">
+  <div class="flex items-center justify-between bg-indigo-800 rounded">
     <!-- LEFT -->
     <div class="flex items-center">
-      <img class="ml-8 h-12" src="@assets/img/logo-small.ico" alt="MeOH" />
+      <img class="ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
       <div>
-        <span class="text-white text-xl ml-4">Welcome to MeÖH!</span>
+        <span class="text-white text-base ml-4">Bridge between electron and molecule </span>
       </div>
     </div>
 

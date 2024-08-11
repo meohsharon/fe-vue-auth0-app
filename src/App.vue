@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="sticky z-50 top-0 p-4">
+    <header class="sticky z-50 top-0 p-4 font-bruno">
       <GlobalHeader />
     </header>
 
-    <div class="flex-grow h-full">
+    <div class="flex-grow h-full font-bruno">
       <main>
         <router-view v-if="!isLoading" />
       </main>

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-slate-400 hover:bg-indigo-800 text-indigo-800 hover:text-slate-400 text-7xl hover:border-transparent rounded-2xl w-96 h-36"
+    class="bg-red-500 hover:bg-indigo-800 text-indigo-800 hover:text-red-500 text-5xl hover:border-transparent rounded-2xl w-80 h-28"
     @click="handleLogin"
   >
     Log In

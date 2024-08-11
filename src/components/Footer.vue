@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
-        <p class="text-center text-s leading-5 text-gray-400">
+        <p class="text-center text-s leading-5 text-gray-400 font-mono">
           &copy; 2024 MeÖH, Inc. All rights reserved.
         </p>
       </div>

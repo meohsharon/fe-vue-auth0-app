@@ -26,3 +26,9 @@ see https://tw-elements.com/docs/standard/components/social-buttons/
 - Doesnt work with relative paths
 - https://stackoverflow.com/questions/72718199/vue-3-require-is-not-defined-for-img-src
 - Need to use https://vitejs.dev/guide/assets.html#importing-asset-as-url
+
+
+
+# Netlify Image CDN 
+- if we need to provide URLs for images to be used elsewhere, such as in the Auth0 Universal Login widgets, 
+  - we can create an invisible <img> in one of our pages and then use https://developers.netlify.com/guides/how-to-serve-optimized-images-using-netlify-image-cdn/ to generate a url similar to this `https://meoh-dev.netlify.app/.netlify/images?url=/assets/auth0-logo-ds4biniu.png`
