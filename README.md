@@ -2,7 +2,6 @@
 
 This is a Vue3 Single Page Application with Auth0 Authentication. This shows how to log in, log out, and view profile information of the logged-in user.
 
-
 ## Running Locally
 
 1. Install the dependencies with npm:
@@ -11,7 +10,6 @@ This is a Vue3 Single Page Application with Auth0 Authentication. This shows how
 npm install
 ```
 
-
 2. Run the app:
 
 ```bash
@@ -19,6 +17,7 @@ npm start
 ```
 
 ## Deployed on Netlify
+
 URL: https://meoh-dev.netlify.app/
 
 ## What is Auth0?

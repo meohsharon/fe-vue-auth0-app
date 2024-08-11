@@ -66,15 +66,14 @@ const getAvatarUrl = (index: number) => {
   }
 };
 
-const handleLogin = (avatar_index: number) => {
-  console.log({ avatar_index });
+const handleLogin = (avatarIndex: number) => {
   loginWithRedirect({
     appState: {
       target: "/home",
     },
     authorizationParams: {
       prompt: "login",
-      avatar: getAvatarUrl(avatar_index),
+      avatar: avatarIndex,
     },
   });
 };

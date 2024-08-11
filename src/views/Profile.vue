@@ -4,7 +4,7 @@
   >
     <img
       class="inline-block rounded-full w-1/3"
-      :src="user?.avatar"
+      :src="avatarSrc"
       alt="avatar"
     />
   </div>
@@ -14,4 +14,5 @@
 import { useAuth0 } from "@auth0/auth0-vue";
 
 const { user } = useAuth0();
+const avatarSrc = `/src/assets/avatars/${user?.value.avatar}.jpg`;
 </script>
