@@ -3,7 +3,7 @@
     <div class="justify-between rounded p-4">
       <img
         class="inline-block w-64 rounded-full"
-        src="@assets/avatars/1.jpg"
+        src="@assets/img/avatars/1.jpg"
         alt="1"
         @click="handleLogin(1)"
       />
@@ -12,7 +12,7 @@
     <div class="justify-between rounded p-4">
       <img
         class="inline-block w-64 rounded-full"
-        src="@assets/avatars/2.jpg"
+        src="@assets/img/avatars/2.jpg"
         alt="2"
         @click="handleLogin(2)"
       />
@@ -21,7 +21,7 @@
     <div class="justify-between rounded p-4">
       <img
         class="inline-block w-64 rounded-full"
-        src="@assets/avatars/3.jpg"
+        src="@assets/img/avatars/3.jpg"
         alt="3"
         @click="handleLogin(3)"
       />
@@ -30,7 +30,7 @@
     <div class="justify-between rounded p-4">
       <img
         class="inline-block w-64 rounded-full"
-        src="@assets/avatars/4.jpg"
+        src="@assets/img/avatars/4.jpg"
         alt="4"
         @click="handleLogin(4)"
       />
@@ -39,7 +39,7 @@
     <div class="justify-between rounded p-4">
       <img
         class="inline-block w-64 rounded-full"
-        src="@assets/avatars/5.jpg"
+        src="@assets/img/avatars/5.jpg"
         alt="5"
         @click="handleLogin(5)"
       />
