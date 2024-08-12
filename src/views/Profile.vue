@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-import Avatar from "@components/AvatarRectanglePng.vue";
+import Avatar from "@components/Avatar.vue";
 </script>

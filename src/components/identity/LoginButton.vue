@@ -19,6 +19,7 @@ const handleLogin = () => {
     },
     authorizationParams: {
       prompt: "login",
+      avatar: 6, // default avatar
     },
   });
 };

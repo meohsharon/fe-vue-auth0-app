@@ -1,27 +1,32 @@
 <template>
-  <div class="flex flex-col items-center px-6 lg:px-8 py-6 sm:py-32">
+  <div class="flex flex-col items-center px-6 lg:px-8 py-4 sm:py-4">
     <img
-      class="mt-4 h-auto max-w-full"
-      src="@assets/img/logo-small.ico"
-      alt="MeOH Mission and Vision"
+      v-if="false"
+      src="@assets/img/auth0-logo.png"
+      alt="Hidden Image for Auth0 Login"
     />
-    <h2
-      class="mb-16 font-light tracking-tight text-xl sm:text-xl text-slate-600 font-mono"
-    >
-      Bridge between electron and molecule
-    </h2>
 
     <div v-if="!isAuthenticated" class="flex flex-col items-center">
-      <h2 class="mt-32 mb-8 font-medium text-xl sm:text-xl">
+      <h2 class="mt-64 mb-4 font-medium text-xl sm:text-xl">
         Click on an Avatar to Log In
       </h2>
       <LoginWithAvatars />
+
+      <Divider />
+
+      <h2 class="mt-16 mb-8 font-medium text-xl sm:text-xl">
+        If you have logged in before, or want to use Default Avatar, then Login
+        Here
+      </h2>
+      <LoginButtonBig />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
+import Divider from "@components/Divider.vue";
+import LoginButtonBig from "@components/identity/LoginButtonBig.vue";
 import LoginWithAvatars from "@components/identity/LoginWithAvatars.vue";
 
 const { isAuthenticated } = useAuth0();

@@ -4,12 +4,14 @@
     <div class="flex items-center">
       <img class="ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
       <div>
-        <span class="text-white text-base ml-4">Bridge between electron and molecule </span>
+        <span class="text-white text-sm ml-4"
+          >Bridge between electron and molecule
+        </span>
       </div>
     </div>
 
     <!-- CONDITIONAL NAVIGATION -->
-    <div v-if="isAuthenticated" class="flex items-center">
+    <div v-if="isAuthenticated" class="flex items-center mr-8">
       <TopNavigation v-show="showTopNavigation" />
       <LogoutButtonWithProfile v-if="isAuthenticated" />
     </div>
