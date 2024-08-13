@@ -7,8 +7,10 @@
   />
 
   <div class="grid grid-cols-2 gap-4">
-    <div class="h-fill content-center justify-middle text-center">
-      <h2 class="mb-8 font-medium text-xl sm:text-xl">
+    <div
+      class="flex-grow items-center content-center justify-middle text-center"
+    >
+      <h2 class="mb-8 font-medium text-xl sm:text-xl content-center">
         If you have logged in before, <br />
         or want to use Default Avatar, then Login Here
       </h2>
@@ -16,7 +18,9 @@
       <LoginButtonBig />
     </div>
 
-    <div class="content-center justify-middle text-center">
+    <div
+      class="flex-grow items-center content-center justify-middle text-center"
+    >
       <h2 class="mt-4 mb-8 font-medium text-xl sm:text-xl">
         Click on an Avatar to Log In
       </h2>
@@ -27,7 +31,6 @@
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import Divider from "@components/Divider.vue";
 import LoginButtonBig from "@components/identity/LoginButtonBig.vue";
 import LoginWithAvatars from "@components/identity/LoginWithAvatars.vue";
 
