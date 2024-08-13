@@ -8,7 +8,7 @@
 
   <div class="grid grid-cols-2 gap-4">
     <div
-      class="flex-grow items-center content-center justify-middle text-center"
+      class="flex-grow items-center content-center justify-middle text-center border-r-2"
     >
       <h2 class="mb-8 font-medium text-xl sm:text-xl content-center">
         If you have logged in before, <br />
