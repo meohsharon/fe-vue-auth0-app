@@ -1,24 +1,26 @@
 <template>
-  <div class="flex flex-col items-center px-6 lg:px-8 py-4 sm:py-4">
-    <img
-      v-if="false"
-      src="@assets/img/auth0-logo.png"
-      alt="Hidden Image for Auth0 Login"
-    />
+  <!-- Do not remove this -->
+  <img
+    v-if="false"
+    src="@assets/img/auth0-logo.png"
+    alt="Hidden Image for Auth0 Login"
+  />
 
-    <div v-if="!isAuthenticated" class="flex flex-col items-center">
-      <h2 class="mt-64 mb-4 font-medium text-xl sm:text-xl">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="h-fill content-center justify-middle text-center">
+      <h2 class="mb-8 font-medium text-xl sm:text-xl">
+        If you have logged in before, <br />
+        or want to use Default Avatar, then Login Here
+      </h2>
+
+      <LoginButtonBig />
+    </div>
+
+    <div class="content-center justify-middle text-center">
+      <h2 class="mt-4 mb-8 font-medium text-xl sm:text-xl">
         Click on an Avatar to Log In
       </h2>
       <LoginWithAvatars />
-
-      <Divider />
-
-      <h2 class="mt-16 mb-8 font-medium text-xl sm:text-xl">
-        If you have logged in before, or want to use Default Avatar, then Login
-        Here
-      </h2>
-      <LoginButtonBig />
     </div>
   </div>
 </template>

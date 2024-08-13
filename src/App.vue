@@ -4,8 +4,8 @@
       <GlobalHeader />
     </header>
 
-    <div class="flex-grow h-full font-bruno">
-      <main>
+    <div class="flex-grow h-fill font-bruno">
+      <main class="flex-grow h-full">
         <router-view v-if="!isLoading" />
       </main>
     </div>
