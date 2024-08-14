@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-4 bg-indigo-800 rounded">
+  <footer class="p-4 rounded border-t-2">
     <div
       class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8"
     >
@@ -8,7 +8,7 @@
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="text-gray-400 hover:text-gray-500"
+          class="text-gray-500 hover:text-gray-900"
           target="_blank"
         >
           <span class="sr-only">{{ item.name }}</span>
@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
-        <p class="text-center text-s leading-5 text-gray-400 font-mono">
+        <p class="text-center text-s leading-5 text-gray-600 font-mono">
           &copy; 2024 MeÖH, Inc. All rights reserved.
         </p>
       </div>

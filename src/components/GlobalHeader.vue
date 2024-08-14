@@ -1,10 +1,10 @@
 <template>
-  <div class="flex items-center justify-between bg-indigo-800 rounded">
+  <div class="flex items-center justify-between rounded border-b-2">
     <!-- LEFT -->
     <div class="flex items-center">
       <img class="ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
       <div>
-        <span class="text-white text-sm ml-4"
+        <span class="text-gray-600 text-sm ml-4"
           >Bridge between electron and molecule
         </span>
       </div>
@@ -28,7 +28,7 @@ import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 
 import LoginButton from "@components/identity/LoginButton.vue";
-import TopNavigation from "@components/TopNavigation.vue";
+import TopNavigation from "@components/TopNavigationWhite.vue";
 import LogoutButtonWithProfile from "@components/identity/LogoutButtonWithProfile.vue";
 
 const { isAuthenticated } = useAuth0();
