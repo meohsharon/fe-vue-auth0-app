@@ -8,23 +8,24 @@
 
   <div class="grid grid-cols-2 gap-4">
     <div
-      class="flex-grow items-center content-center justify-middle text-center border-r-2"
+      class="flex-grow items-center content-center justify-middle text-center"
     >
-      <h2 class="mb-8 font-medium text-xl sm:text-xl content-center">
-        If you have logged in before, <br />
-        or want to use Default Avatar, then Login Here
+      <h2 class="mt-4 mb-2 font-medium text-xl sm:text-xl">
+        Click An Image to Sign Up
       </h2>
 
-      <LoginButtonBig />
+      <h2 class="mb-8 font-medium text-base sm:text-base">
+        (The image will become your Avatar)
+      </h2>
+      <LoginWithAvatars />
     </div>
 
     <div
-      class="flex-grow items-center content-center justify-middle text-center"
+      class="flex-grow items-center content-center justify-middle text-center border-r-2"
     >
-      <h2 class="mt-4 mb-8 font-medium text-xl sm:text-xl">
-        Click on an Avatar to Log In
-      </h2>
-      <LoginWithAvatars />
+      <h2 class="mb-2 font-medium text-xl sm:text-xl content-center">Log In</h2>
+      <h2 class="mb-8 font-medium text-base sm:text-base content-center">(Using existing or default Avatar)</h2>
+      <LoginButtonBig />
     </div>
   </div>
 </template>

@@ -13,7 +13,7 @@
     <!-- CONDITIONAL NAVIGATION -->
     <div v-if="isAuthenticated" class="flex items-center mr-8">
       <TopNavigation v-show="showTopNavigation" />
-      <LogoutButtonWithProfile v-if="isAuthenticated" />
+      <LogoutButtonWithProfile />
     </div>
 
     <!-- CONDITIONAL LOGIN -->
