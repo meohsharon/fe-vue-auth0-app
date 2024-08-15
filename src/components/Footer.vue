@@ -84,7 +84,7 @@ const navigation = [
   },
   {
     name: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@sharonlau-meoh",
     icon: defineComponent({
       render: () =>
         h("svg", { fill: "currentColor", viewBox: "0 0 24 24" }, [
