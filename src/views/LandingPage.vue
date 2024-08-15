@@ -21,7 +21,7 @@
     </div>
 
     <div
-      class="flex-grow items-center content-center justify-middle text-center py-24 lg:py-0 sm:py-0"
+      class="flex-grow items-center content-center justify-middle text-center py-8 sm:py-2 md:py-4 lg:py-8 xl:py-12 lg:py-0 sm:py-0"
     >
       <h2 class="mb-2 font-medium text-xl sm:text-xl content-center">Log In</h2>
       <h2 class="mb-8 font-medium text-base sm:text-base content-center">(Using existing or default Avatar)</h2>
