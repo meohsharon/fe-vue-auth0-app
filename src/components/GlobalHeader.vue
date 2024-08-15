@@ -2,9 +2,13 @@
   <div class="flex items-center justify-between rounded border-b-2">
     <!-- LEFT -->
     <div class="flex items-center">
-      <img class="sm:ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
+      <img
+        class="sm:ml-8 h-14 md:h-24"
+        src="@assets/img/logo-small.ico"
+        alt="MeOH"
+      />
       <div class="flex max-w-[180px] sm:max-w-full">
-        <span class="text-gray-600 text-[10px] sm:text-sm ml-4"
+        <span class="text-gray-600 text-xs md:text-base ml-4"
           >Bridge between electron and molecule
         </span>
       </div>
