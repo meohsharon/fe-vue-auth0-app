@@ -9,6 +9,12 @@
     <button
       class="bg-transparent hover:bg-white text-white hover:text-black hover:border-transparent rounded p-4 m-4"
     >
+      <a href="/story-telling">Story Telling</a>
+    </button>
+
+    <button
+      class="bg-transparent hover:bg-white text-white hover:text-black hover:border-transparent rounded p-4 m-4"
+    >
       <a href="/profile">My Profile</a>
     </button>
   </header>

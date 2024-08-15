@@ -1,5 +1,5 @@
 <template>
-  <div class="snap-x flex justify-center">
+  <div class="snap-x flex justify-center gap-2">
     <div class="p-4 m-1">
       <img
         class="inline-block w-32"
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="snap-x flex justify-center">
+  <div class="snap-x flex justify-center gap-2">
     <div class="p-4 m-1">
       <img
         class="inline-block w-32"
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="snap-x flex justify-center">
+  <div class="snap-x flex justify-center gap-2">
     <div class="p-4 m-1">
       <img
         class="inline-block w-32"
