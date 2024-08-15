@@ -10,7 +10,10 @@
           alt="User Profile Picture"
         />
         {{ user?.name }}
-        <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-600" aria-hidden="true" />
+        <ChevronDownIcon
+          class="-mr-1 h-5 w-5 text-gray-600"
+          aria-hidden="true"
+        />
       </MenuButton>
     </div>
 

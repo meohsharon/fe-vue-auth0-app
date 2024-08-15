@@ -23,8 +23,12 @@
     <div
       class="flex-grow items-center content-center justify-middle text-center py-12 md:py-4 lg:py-8 sm:py-0"
     >
-      <h2 class="mb-2 font-medium text-base md:text-2xl content-center">Log In</h2>
-      <h2 class="mb-8 font-medium text-xs md:text-base content-center">(Using existing or default Avatar)</h2>
+      <h2 class="mb-2 font-medium text-base md:text-2xl content-center">
+        Log In
+      </h2>
+      <h2 class="mb-8 font-medium text-xs md:text-base content-center">
+        (Using existing or default Avatar)
+      </h2>
       <LoginButtonBig />
     </div>
   </div>

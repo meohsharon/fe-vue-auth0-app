@@ -3,7 +3,9 @@
     v-if="!isLoading"
     class="flex h-full items-center justify-center align-middle mt-12 text-2xl sm:text-3xl"
   >
-    <p class="max-w-[300px] sm:max-w-full text-center">Hello {{ user.name }}. You are Logged In!</p>
+    <p class="max-w-[300px] sm:max-w-full text-center">
+      Hello {{ user.name }}. You are Logged In!
+    </p>
   </div>
 
   <Avatar />

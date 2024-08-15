@@ -1,6 +1,11 @@
 <template>
   <div class="image-container" ref="imageContainer">
-    <img :src="imageSrc" alt="Hotspot Image" class="image" @click="handleClick($event)" />
+    <img
+      :src="imageSrc"
+      alt="Hotspot Image"
+      class="image"
+      @click="handleClick($event)"
+    />
     <div
       v-for="(hotspot, index) in hotspots"
       class="hotspot"
@@ -25,7 +30,12 @@ export default {
       imageSrc: this.imageUrl,
       isZoomIn: false,
       hotspots: [
-        { top: "20%", left: "30%", action: "showMessage", label: "Show Message" },
+        {
+          top: "20%",
+          left: "30%",
+          action: "showMessage",
+          label: "Show Message",
+        },
         { top: "50%", left: "50%", action: "toggleZoom", label: "Zoom In" },
         { top: "70%", left: "20%", action: "navigateToView", label: "Go Back" },
         { top: "80%", left: "60%", action: "showForm", label: "Show Form" },
@@ -154,7 +164,9 @@ export default {
     border: 0.15em solid #ffffff88;
     opacity: 0;
     transform: scale(2);
-    transition: transform 0.25s, opacity 0.2s;
+    transition:
+      transform 0.25s,
+      opacity 0.2s;
   }
 
   &:after {
