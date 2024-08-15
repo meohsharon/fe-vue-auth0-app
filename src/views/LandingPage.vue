@@ -10,21 +10,21 @@
     <div
       class="flex-grow items-center content-center justify-middle text-center border-b-2 lg:border-r-2 lg:border-b-0"
     >
-      <h2 class="mt-4 mb-2 font-medium text-xl sm:text-xl">
+      <h2 class="mt-4 mb-2 font-medium text-base md:text-2xl">
         Click An Image to Sign Up
       </h2>
 
-      <h2 class="mb-8 font-medium text-base sm:text-base">
+      <h2 class="mb-8 font-medium text-xs md:text-base">
         (The image will become your Avatar)
       </h2>
       <LoginWithAvatars />
     </div>
 
     <div
-      class="flex-grow items-center content-center justify-middle text-center py-8 sm:py-2 md:py-4 lg:py-8 xl:py-12 lg:py-0 sm:py-0"
+      class="flex-grow items-center content-center justify-middle text-center py-12 md:py-4 lg:py-8 sm:py-0"
     >
-      <h2 class="mb-2 font-medium text-xl sm:text-xl content-center">Log In</h2>
-      <h2 class="mb-8 font-medium text-base sm:text-base content-center">(Using existing or default Avatar)</h2>
+      <h2 class="mb-2 font-medium text-base md:text-2xl content-center">Log In</h2>
+      <h2 class="mb-8 font-medium text-xs md:text-base content-center">(Using existing or default Avatar)</h2>
       <LoginButtonBig />
     </div>
   </div>
