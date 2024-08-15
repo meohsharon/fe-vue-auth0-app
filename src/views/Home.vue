@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="!isLoading"
-    class="flex h-full items-center justify-center align-middle mt-12 text-3xl"
+    class="flex h-full items-center justify-center align-middle mt-12 text-2xl sm:text-3xl"
   >
-    Hello {{ user.name }}. You are Logged In!
+    <p class="max-w-[300px] sm:max-w-full text-center">Hello {{ user.name }}. You are Logged In!</p>
   </div>
 
   <Avatar />

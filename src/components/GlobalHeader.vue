@@ -2,16 +2,16 @@
   <div class="flex items-center justify-between rounded border-b-2">
     <!-- LEFT -->
     <div class="flex items-center">
-      <img class="ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
-      <div>
-        <span class="text-gray-600 text-sm ml-4"
+      <img class="sm:ml-8 h-24" src="@assets/img/logo-small.ico" alt="MeOH" />
+      <div class="flex max-w-[180px] sm:max-w-full">
+        <span class="text-gray-600 text-[10px] sm:text-sm ml-4"
           >Bridge between electron and molecule
         </span>
       </div>
     </div>
 
     <!-- CONDITIONAL NAVIGATION -->
-    <div v-if="isAuthenticated" class="flex items-center mr-8">
+    <div v-if="isAuthenticated" class="flex items-center sm:mr-8">
       <TopNavigation v-show="showTopNavigation" />
       <LogoutButtonWithProfile />
     </div>

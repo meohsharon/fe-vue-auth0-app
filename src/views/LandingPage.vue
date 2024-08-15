@@ -6,7 +6,7 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div
       class="flex-grow items-center content-center justify-middle text-center"
     >
@@ -21,7 +21,7 @@
     </div>
 
     <div
-      class="flex-grow items-center content-center justify-middle text-center border-r-2"
+      class="flex-grow items-center content-center justify-middle text-center border-r-2 py-6 sm:py-0"
     >
       <h2 class="mb-2 font-medium text-xl sm:text-xl content-center">Log In</h2>
       <h2 class="mb-8 font-medium text-base sm:text-base content-center">(Using existing or default Avatar)</h2>
