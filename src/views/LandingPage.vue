@@ -8,7 +8,7 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div
-      class="flex-grow items-center content-center justify-middle text-center"
+      class="flex-grow items-center content-center justify-middle text-center border-b-2 lg:border-r-2 lg:border-b-0"
     >
       <h2 class="mt-4 mb-2 font-medium text-xl sm:text-xl">
         Click An Image to Sign Up
@@ -21,7 +21,7 @@
     </div>
 
     <div
-      class="flex-grow items-center content-center justify-middle text-center border-r-2 py-6 sm:py-0"
+      class="flex-grow items-center content-center justify-middle text-center py-24 lg:py-0 sm:py-0"
     >
       <h2 class="mb-2 font-medium text-xl sm:text-xl content-center">Log In</h2>
       <h2 class="mb-8 font-medium text-base sm:text-base content-center">(Using existing or default Avatar)</h2>
