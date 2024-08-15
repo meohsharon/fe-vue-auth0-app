@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const Landing = () => import("@views/LandingPage.vue");
 const Home = () => import("@views/Home.vue");
+const StoryTelling = () => import("@views/StoryTelling.vue");
 const Profile = () => import("@views/Profile.vue");
 const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
@@ -17,6 +18,12 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/story-telling",
+    name: "StoryTelling",
+    component: StoryTelling,
     beforeEnter: authGuard,
   },
   {

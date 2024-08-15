@@ -10,10 +10,7 @@
           alt="User Profile Picture"
         />
         {{ user?.name }}
-        <ChevronDownIcon
-          class="-mr-1 h-5 w-5 text-gray-600"
-          aria-hidden="true"
-        />
+        <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-600" aria-hidden="true" />
       </MenuButton>
     </div>
 
@@ -28,6 +25,12 @@
       <MenuItems
         class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       >
+        <div class="px-4 py-3 block sm:hidden">
+          <a href="/home">Home</a>
+        </div>
+        <div class="px-4 py-3 block sm:hidden">
+          <a href="/home">My Profile</a>
+        </div>
         <div class="px-4 py-3">
           <p class="text-sm">Signed in as</p>
           <p class="truncate text-sm font-medium text-gray-900">
