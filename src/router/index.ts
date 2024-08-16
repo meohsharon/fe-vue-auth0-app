@@ -2,10 +2,11 @@ import { authGuard } from "@auth0/auth0-vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const Landing = () => import("@views/LandingPageAvatars.vue");
-const Home = () => import("@views/Home.vue");
+// const Home = () => import("@views/Home.vue");
 const Profile = () => import("@views/Profile.vue");
 const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
+const StoryTelling = () => import("@views/StoryTelling.vue");
 
 const routes = [
   {
@@ -13,10 +14,16 @@ const routes = [
     name: "LandingPage",
     component: Landing,
   },
+  // {
+  //   path: "/home",
+  //   name: "Home",
+  //   component: Home,
+  //   beforeEnter: authGuard,
+  // },
   {
     path: "/home",
-    name: "Home",
-    component: Home,
+    name: "StoryTelling",
+    component: StoryTelling,
     beforeEnter: authGuard,
   },
   {
