@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-full justify-center text-3xl mt-[12%]">
+  <div class="flex h-full justify-center text-3xl mt-12">
     <img
       class="inline-block border border-slate-300 w-1/2"
       :src="avatarSrc"
