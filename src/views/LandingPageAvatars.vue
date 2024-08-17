@@ -6,7 +6,10 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <div class="flex-grow items-center content-center justify-middle text-center">
+  <div
+    v-if="!isAuthenticated"
+    class="flex-grow items-center content-center justify-middle text-center"
+  >
     <h2 class="mt-4 mb-2 font-medium text-base md:text-2xl">
       Click An Image to Sign Up or Login
     </h2>
@@ -20,7 +23,6 @@
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import LoginButtonBig from "@components/identity/LoginButtonBig.vue";
 import LoginWithAvatars from "@components/identity/LoginWithAvatars.vue";
 
 const { isAuthenticated } = useAuth0();

@@ -6,7 +6,7 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div v-if="!isAuthenticated" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div
       class="flex-grow items-center content-center justify-middle text-center border-b-2 lg:border-r-2 lg:border-b-0"
     >
