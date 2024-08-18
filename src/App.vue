@@ -1,20 +1,18 @@
 <template>
-  <div class="flex flex-col min-h-screen">    
+  <div class="flex flex-col min-h-screen">
     <header class="sticky z-50 top-0 p-4 font-bruno bg-white">
       <GlobalHeader />
-    </header> 
-   
+    </header>
+
     <div class="flex-grow content-center font-bruno z-30 px-3 sm:px-0">
       <main>
         <router-view v-if="!isLoading" />
       </main>
     </div>
 
-    
-    <footer class="sm:sticky z-50 bottom-0 p-4 bg-white">
+    <footer class="sm:sticky z-50 bottom-0 bg-white">
       <Footer />
-    </footer> 
-   
+    </footer>
   </div>
 </template>
 
