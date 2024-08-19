@@ -1,13 +1,13 @@
 <template>
-  <header class="flex items-center bg-indigo-800">
+  <header class="items-center bg-transparent text-gray-900 hidden sm:flex">
     <button
-      class="bg-transparent hover:bg-white text-white hover:text-black hover:border-transparent rounded p-4 m-4"
+      class="hover:bg-white hover:text-red-500 hover:border-transparent rounded p-4 m-4"
     >
       <a href="/home">Home</a>
     </button>
 
     <button
-      class="bg-transparent hover:bg-white text-white hover:text-black hover:border-transparent rounded p-4 m-4"
+      class="hover:bg-white hover:text-red-500 hover:border-transparent rounded p-4 m-4"
     >
       <a href="/profile">My Profile</a>
     </button>

@@ -1,11 +1,11 @@
 <template>
-  <footer class="p-4 rounded border-t-2">
+  <footer class="rounded border-t-2">
     <div
-      class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8"
+      class="mx-auto max-w-7xl px-6 md:px-12 py-6 md:py-12 md:flex md:items-center md:justify-between"
     >
       <div class="flex justify-center space-x-6 md:order-2">
         <a
-          v-for="item in navigation"
+          v-for="item in socials"
           :key="item.name"
           :href="item.href"
           class="text-gray-500 hover:text-gray-900"
@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
-        <p class="text-center text-s leading-5 text-gray-600 font-mono">
+        <p class="text-center text-sm leading-5 text-gray-600 font-mono">
           &copy; 2024 MeÖH, Inc. All rights reserved.
         </p>
       </div>
@@ -27,7 +27,7 @@
 <script setup>
 import { defineComponent, h } from "vue";
 
-const navigation = [
+const socials = [
   {
     name: "Discord",
     href: "https://discord.gg/7B5V7GeJ",

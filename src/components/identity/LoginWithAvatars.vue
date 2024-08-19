@@ -1,88 +1,40 @@
 <template>
   <div class="snap-x flex justify-center gap-2">
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/1.png"
-        alt="1"
-        @click="handleLogin(1)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/2.png"
-        alt="2"
-        @click="handleLogin(2)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/3.png"
-        alt="3"
-        @click="handleLogin(3)"
-      />
+    <div v-for="index in avatarIndices">
+      <div class="p-4 m-1">
+        <img
+          class="inline-block w-32"
+          :src="imgSrc(index)"
+          :alt="`${index}.png`"
+          @click="handleLogin(index)"
+        />
+      </div>
     </div>
   </div>
 
   <div class="snap-x flex justify-center gap-2">
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/3.png"
-        alt="3"
-        @click="handleLogin(3)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/4.png"
-        alt="4"
-        @click="handleLogin(4)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/5.png"
-        alt="5"
-        @click="handleLogin(5)"
-      />
+    <div v-for="index in avatarIndices">
+      <div class="p-4 m-1">
+        <img
+          class="inline-block w-32"
+          :src="imgSrc(index + 3)"
+          :alt="`${index + 3}.png`"
+          @click="handleLogin(index + 3)"
+        />
+      </div>
     </div>
   </div>
 
   <div class="snap-x flex justify-center gap-2">
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/2.png"
-        alt="2"
-        @click="handleLogin(2)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/1.png"
-        alt="1"
-        @click="handleLogin(1)"
-      />
-    </div>
-
-    <div class="p-4 m-1">
-      <img
-        class="inline-block w-32"
-        src="@assets/avatars/png/4.png"
-        alt="4"
-        @click="handleLogin(4)"
-      />
+    <div v-for="index in avatarIndices">
+      <div class="p-4 m-1">
+        <img
+          class="inline-block w-32"
+          :src="imgSrc(index + 6)"
+          :alt="`${index + 6}.png`"
+          @click="handleLogin(index + 6)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -91,7 +43,6 @@
 import { useAuth0 } from "@auth0/auth0-vue";
 
 const { loginWithRedirect } = useAuth0();
-
 const handleLogin = (avatarIndex: number) => {
   loginWithRedirect({
     appState: {
@@ -102,6 +53,11 @@ const handleLogin = (avatarIndex: number) => {
       avatar: avatarIndex,
     },
   });
+};
+
+const avatarIndices = [1, 2, 3];
+const imgSrc = (index: number) => {
+  return new URL(`/src/assets/avatars/${index}.png`, import.meta.url).href;
 };
 </script>
 
