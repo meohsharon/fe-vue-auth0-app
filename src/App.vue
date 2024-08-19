@@ -4,7 +4,7 @@
       <GlobalHeader />
     </header>
 
-    <div class="flex-grow content-center font-bruno z-30 px-3 sm:px-0">
+    <div class="flex-grow content-center font-bruno z-30 mt-0 md:mt-16">
       <main>
         <router-view v-if="!isLoading" />
       </main>
