@@ -116,22 +116,66 @@
     <div
       class="flex justify-between absolute bottom-0 w-full pb-4 px-2 sm:px-[60px] xl:px-[40px] z-50"
     >
-      <button
+      <!-- <button
         @click="previousPage"
         :style="{ visibility: currentPage === 0 ? 'hidden' : 'visible' }"
         :disabled="currentPage === 0"
         class="storytelling-button"
       >
         Previous
-      </button>
-      <button
+      </button> -->
+
+      <!-- <button
         @click="nextPage"
         :style="{ visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible' }"
         :disabled="currentPage === pages.length - 1"
         class="storytelling-button"
       >
         Next
-      </button>
+      </button> -->
+
+      <div
+        @click="previousPage"
+        :style="{ visibility: currentPage === 0 ? 'hidden' : 'visible' }"
+        :disabled="currentPage === 0"
+        class="hover:cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="48px"
+          height="48px"
+          fill="none"
+          stroke="white"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="14 16 10 12 14 8" />
+        </svg>
+      </div>
+      <div
+        @click="nextPage"
+        :style="{ visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible' }"
+        :disabled="currentPage === pages.length - 1"
+        class="hover:cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="48px"
+          height="48px"
+          fill="none"
+          stroke="white"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="10 8 14 12 10 16" />
+        </svg>
+      </div>
     </div>
   </div>
 </template>
