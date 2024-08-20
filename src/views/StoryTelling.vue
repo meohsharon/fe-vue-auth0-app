@@ -29,13 +29,19 @@
       </div>
     </div>
 
-    <div v-if="isMapOpen" class="w-full h-full">
+    <div v-if="isMapOpen && currentPage === 1" class="w-full h-full">
       <GMapMap
         :center="center"
-        :zoom="7"
+        :zoom="4"
         map-type-id="terrain"
-        style="width: 100vw; height: 900px"
-      />
+        style="width: 100vw; height: 700px"
+      >
+        <GMapMarker
+          :key="marker.id"
+          v-for="marker in markers"
+          :position="marker.position"
+        />
+      </GMapMap>
     </div>
 
     <div v-if="currentPage >= 2 && currentPage <= 4" class="relative">
@@ -188,7 +194,7 @@ export default {
       currentPage: 0,
       pages: [1, 2, 3, 4, 5, 6],
       isMapOpen: false,
-      center: { lat: 51.093048, lng: 6.84212 },
+      center: { lat: 37.0902, lng: -95.7129 },
     };
   },
   computed: {
