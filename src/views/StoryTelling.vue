@@ -35,12 +35,9 @@
         :zoom="4"
         map-type-id="terrain"
         style="width: 100vw; height: 700px"
+        @click="addMarker"
       >
-        <GMapMarker
-          :key="marker.id"
-          v-for="marker in markers"
-          :position="marker.position"
-        />
+        <GMapMarker v-if="markerPostion" :position="markerPostion" />
       </GMapMap>
     </div>
 
@@ -195,6 +192,7 @@ export default {
       pages: [1, 2, 3, 4, 5, 6],
       isMapOpen: false,
       center: { lat: 37.0902, lng: -95.7129 },
+      markerPostion: null,
     };
   },
   computed: {
@@ -215,6 +213,9 @@ export default {
     },
     showMap() {
       this.isMapOpen = true;
+    },
+    addMarker(event) {
+      this.markerPostion = event.latLng;
     },
   },
 };
