@@ -37,7 +37,11 @@
         style="width: 100vw; height: 700px"
         @click="addMarker"
       >
-        <GMapMarker v-if="markerPostion" :position="markerPostion" />
+        <GMapMarker
+          v-for="(position, index) in markerPositions"
+          :key="index"
+          :position="position"
+        />
       </GMapMap>
     </div>
 
@@ -192,7 +196,7 @@ export default {
       pages: [1, 2, 3, 4, 5, 6],
       isMapOpen: false,
       center: { lat: 37.0902, lng: -95.7129 },
-      markerPostion: null,
+      markerPositions: [],
     };
   },
   computed: {
@@ -215,7 +219,7 @@ export default {
       this.isMapOpen = true;
     },
     addMarker(event) {
-      this.markerPostion = event.latLng;
+      this.markerPositions.push(event.latLng);
     },
   },
 };
