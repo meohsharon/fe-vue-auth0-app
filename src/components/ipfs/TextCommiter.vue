@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useCommitText } from "../../HeliaApi/useCommitText";
+import { useCommitText } from "@helpers/heliaApi/useCommitText";
 
 const { cid, commitText, commitedText, fetchCommitedText } = useCommitText();
 const textToCommit = ref();

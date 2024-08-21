@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useUnixFS } from "../../HeliaApi";
+import { useUnixFS } from "@helpers/heliaApi";
 
 const { getStat, addDirectory, getDirectory, addFile, getFile } = useUnixFS();
 
