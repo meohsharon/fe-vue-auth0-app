@@ -1,36 +1,42 @@
 <template>
-  <!-- <Avatar /> -->
+  <section class="flex justify-center p-0 md:p-24">
+    <p
+      id="heliaStatus"
+      :style="{ color: `${readyMessage ? heliaStatusColor : 'transparent'}` }"
+    >
+      Helia is {{ readyMessage }} to access IPFS
+    </p>
+  </section>
 
-  <header id="heliaStatus">
-    <div class="wrapper">
-      Helia is: {{ readyMessage }}
-    </div>
-  </header>
-
-  <main>
+  <section
+    class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8 bg-red-100"
+  >
     <TextCommiter />
-    <UnixFSManager />
-  </main>
-  
+  </section>
+
+  <section
+    class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8 bg-red-100"
+  >
+    <!-- <UnixFSManager /> -->
+  </section>
 </template>
 
 <script setup lang="ts">
-import Avatar from "@components/Avatar.vue";
+import { inject, computed } from "vue";
+import TextCommiter from "@components/ipfs/TextCommiter.vue";
+import UnixFSManager from "@components/ipfs/UnixFSManager.vue";
 
-import { ref, inject, computed  } from 'vue';
-import TextCommiter from '@components/ipfs/TextCommiter.vue';
-import UnixFSManager from '@components/ipfs/UnixFSManager.vue';
-
-const {loading, error}  = inject('HeliaProvider') as any;
-
-const statusColor = computed(() => {
-  if (loading.value == true) return 'yellow'
-  if (loading.value == false && error.value.length == 0) return 'green'
-  return 'red'
-})
+const { loading, error } = inject("HeliaProvider") as any;
+let heliaStatusColor = undefined;
 const readyMessage = computed(() => {
-  if (loading.value == true) return 'Loading...'
-  if (loading.value == false && error.value.length == 0) return 'Ready'
-  return 'Failing'
-})
+  if (loading.value == true) {
+    heliaStatusColor = "yellow";
+    return "Loading...";
+  }
+  if (loading.value == false && error.value.length == 0) {
+    heliaStatusColor = "green";
+    return "Ready";
+  }
+  return "Failing";
+});
 </script>

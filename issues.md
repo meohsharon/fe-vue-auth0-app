@@ -34,8 +34,8 @@ see https://tw-elements.com/docs/standard/components/social-buttons/
 - if we need to provide URLs for images to be used elsewhere, such as in the Auth0 Universal Login widgets,
   - we can create an invisible <img> in one of our pages and then use https://developers.netlify.com/guides/how-to-serve-optimized-images-using-netlify-image-cdn/ to generate a url similar to this `https://meoh-dev.netlify.app/.netlify/images?url=/assets/auth0-logo-ds4biniu.png`
 
-
 # Netlify DNS / Domain Management
+
 - follow all the tutorials, but make sure to swtich the subdomain to be primary
   - apex domain: meoh.world
   - subdomain: www.meoh.world <<<< this one needs to be marked Primary in Netlify

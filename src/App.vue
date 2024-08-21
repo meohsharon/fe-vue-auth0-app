@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="sticky z-40 top-0 p-4 font-bruno bg-white">
+    <header class="sticky z-40 top-0 h-16 md:h-20 font-bruno bg-white">
       <GlobalHeader />
     </header>
 

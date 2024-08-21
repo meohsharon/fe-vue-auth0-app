@@ -86,7 +86,7 @@ module.exports = {
         "call-height": "536px",
         "email-height": "598px",
         "calling-height": "536px",
-        "custom": "calc(100vh - 278px)",
+        custom: "calc(100vh - 278px)",
         fill: "398px",
       },
       width: {

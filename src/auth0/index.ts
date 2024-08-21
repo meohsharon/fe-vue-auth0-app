@@ -1,5 +1,5 @@
 import { createAuth0, type Auth0VueClientOptions } from "@auth0/auth0-vue";
-import CONFIG from "../helpers/config";
+import CONFIG from "@helpers/config";
 
 const { AUTH0_DOMAIN, AUTH0_AUDIENCE, AUTH0_CLIENT_ID } = CONFIG;
 
