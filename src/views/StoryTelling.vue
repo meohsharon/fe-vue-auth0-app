@@ -1,19 +1,14 @@
 <template>
   <div class="storytelling-container">
     <img
-      v-if="currentPage === 1"
+      v-if="currentPage === 1 && !isMapOpen"
       src="@/assets/img/story-telling/map.png"
       alt="World Map"
       class="storytelling-map"
       @click="showMap"
-      :style="{ visibility: isMapOpen ? 'hidden' : 'visible' }"
     />
 
-    <div
-      class="storytelling-content"
-      v-if="isTextImagePage"
-      :style="{ visibility: isMapOpen ? 'hidden' : 'visible' }"
-    >
+    <div class="storytelling-content" v-if="isTextImagePage && !isMapOpen">
       <div class="text-image-container">
         <img
           src="@/assets/img/story-telling/textImg.png"
@@ -34,25 +29,34 @@
       </div>
     </div>
 
-    <div v-if="isMapOpen" class="w-full h-full">
+    <div v-if="isMapOpen && currentPage === 1" class="w-full h-full">
       <GMapMap
         :center="center"
-        :zoom="7"
+        :zoom="4"
         map-type-id="terrain"
-        style="width: 100vw; height: 900px"
-      />
+        style="width: 100vw; height: 700px"
+        @click="addMarker"
+      >
+        <GMapMarker
+          v-for="(position, index) in markerPositions"
+          :key="index"
+          :position="position"
+        />
+      </GMapMap>
     </div>
 
     <div v-if="currentPage >= 2 && currentPage <= 4" class="relative">
       <img
         src="@/assets/img/story-telling/forest.png"
         alt="Forest background"
-        class="w-full xl:w-[1400px] h-screen xl:h-[700px]"
+        class="w-full xl:w-[1400px] h-screen xl:h-[676px]"
       />
       <div
-        class="absolute top-[100px] left-0 flex flex-row xl:gap-[50px] xl:pl-[85px]"
+        class="absolute top-[100px] left-0 flex flex-row gap-0 lg:gap-[100px] xl:gap-[50px] xl:pl-[85px]"
       >
-        <div class="relative z-40">
+        <div
+          class="relative z-40 mt-[70px] sm:mt-[100px] xl:-mt-[20px] ml-3 sm:ml-3"
+        >
           <img
             src="@/assets/img/story-telling/paper.png"
             alt="Paper background"
@@ -123,17 +127,18 @@
     </div>
 
     <div
-      class="flex justify-between absolute bottom-0 w-full pb-4 px-2 sm:px-[60px] xl:px-[40px] z-50"
+      class="flex justify-between absolute bottom-0 w-full pb-4 px-2 sm:px-[13px] md:px-[60px] xl:px-[40px] z-50"
     >
-      <button
+      <!-- <button
         @click="previousPage"
         :style="{ visibility: currentPage === 0 ? 'hidden' : 'visible' }"
         :disabled="currentPage === 0"
         class="storytelling-button"
       >
         Previous
-      </button>
-      <button
+      </button> -->
+
+      <!-- <button
         @click="nextPage"
         :style="{
           visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible',
@@ -142,7 +147,52 @@
         class="storytelling-button"
       >
         Next
-      </button>
+      </button> -->
+
+      <div
+        @click="previousPage"
+        :style="{ visibility: currentPage === 0 ? 'hidden' : 'visible' }"
+        :disabled="currentPage === 0"
+        class="hover:cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="48px"
+          height="48px"
+          fill="none"
+          stroke="white"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="14 16 10 12 14 8" />
+        </svg>
+      </div>
+      <div
+        @click="nextPage"
+        :style="{
+          visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible',
+        }"
+        :disabled="currentPage === pages.length - 1"
+        class="hover:cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="48px"
+          height="48px"
+          fill="none"
+          stroke="white"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="10 8 14 12 10 16" />
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -155,7 +205,8 @@ export default {
       currentPage: 0,
       pages: [1, 2, 3, 4, 5, 6],
       isMapOpen: false,
-      center: { lat: 51.093048, lng: 6.84212 },
+      center: { lat: 37.0902, lng: -95.7129 },
+      markerPositions: [],
     };
   },
   computed: {
@@ -167,15 +218,20 @@ export default {
     previousPage() {
       if (this.currentPage > 0) {
         this.currentPage--;
+        this.isMapOpen = false;
       }
     },
     nextPage() {
       if (this.currentPage < this.pages.length - 1) {
         this.currentPage++;
+        this.isMapOpen = false;
       }
     },
     showMap() {
       this.isMapOpen = true;
+    },
+    addMarker(event) {
+      this.markerPositions.push(event.latLng);
     },
   },
 };
@@ -183,15 +239,15 @@ export default {
 
 <style scoped>
 .storytelling-container {
-  @apply w-full h-[605px] sm:h-[595px] xl:h-[701px] flex flex-col justify-center items-center relative -mt-[60px] z-50 bg-[#0c2977];
+  @apply w-full h-custom flex flex-col justify-center items-center relative -mt-[60px] z-50 bg-[#0c2977];
 }
 
 .storytelling-map {
-  @apply w-full sm:w-[700px] xl:w-[1000px] absolute md:top-[58px];
+  @apply max-w-full sm:max-w-[600px] md:max-w-[700px] 2xl:max-w-[1000px] absolute md:top-[58px] md:mt-[-57px];
 }
 
 .storytelling-content {
-  @apply absolute -bottom-[20px] sm:bottom-[50px] xl:-bottom-[23px] left-1/2 -translate-x-1/2 pb-28 sm:pb-0 w-[400px] sm:w-[640px] xl:w-[740px];
+  @apply absolute bottom-[55px] sm:bottom-0 xl:-bottom-[23px] left-1/2 -translate-x-1/2 max-w-[400px] sm:max-w-[640px] xl:max-w-[740px] w-full;
 }
 
 .text-image-container {
@@ -199,7 +255,7 @@ export default {
 }
 
 .text-image {
-  @apply h-[151px] sm:h-[190px] xl:h-[230px] w-[640px] xl:w-[740px];
+  @apply h-[151px] sm:h-[190px] xl:h-[230px] w-[500px] md:w-[640px] xl:w-[740px];
 }
 
 .boy-image {
@@ -207,38 +263,38 @@ export default {
 }
 
 .storytelling-title {
-  @apply absolute top-[25px] sm:top-[30px] md:top-[32px] xl:top-[37px] left-[95px] sm:left-[123px] xl:left-[133px] text-xs sm:text-lg xl:text-[25px] pl-0 sm:pl-[30px] text-white font-medium;
+  @apply absolute top-[25px] sm:top-[30px] xl:top-[37px] left-[95px] sm:left-[152px] md:left-[133px] text-xs sm:text-lg xl:text-[25px] pl-0 sm:pl-[30px] text-white font-medium;
 }
 
 .storytelling-description {
-  @apply absolute top-[65px] sm:top-[84px] xl:top-[95px] left-[20px] sm:left-[55px] xl:left-[45px] text-[10px] sm:text-[14px] xl:text-[17px] w-[335px] sm:w-[478px] xl:w-[580px] leading-5 sm:leading-6 xl:leading-8;
+  @apply absolute top-[60px] sm:top-[80px] xl:top-[95px] left-[20px] sm:left-[97px] md:left-[45px] text-[10px] sm:text-[12px] md:text-[15px] xl:text-[17px] max-w-[335px] sm:max-w-[465px] md:max-w-[550px] xl:max-w-[580px] leading-5 sm:leading-6 xl:leading-8;
 }
 
 .storytelling-button {
   @apply w-[75px] xl:w-[150px] h-[40px] xl:h-[50px] border-white border-[1px] xl:border-2 border-solid rounded-tr-[15px] rounded-bl-[15px] xl:font-medium text-[10px] xl:text-[20px] text-white;
 }
 
-.text-style {
-  @apply w-[235px] lg:w-[255px] text-gray-500 absolute top-[195px] sm:top-[160px] lg:top-[190px] xl:top-[105px] left-[95px] sm:left-[115px] lg:left-[155px] text-[16px] lg:text-[19px];
-}
-
 .image-style {
-  @apply w-[400px] xl:w-[480px] h-[500px] xl:h-[580px] mt-[100px] xl:mt-0;
+  @apply w-[400px] md:w-[450px] xl:w-[480px] h-[500px] sm:h-[450px] md:h-[500px] xl:h-[580px] mt-[100px] md:mt-[80px] xl:mt-[-45px];
 }
 
 .stand-girl {
-  @apply w-[170px] sm:w-[220px] xl:w-[450px] h-[210px] sm:h-[300px] xl:h-[600px] absolute bottom-[90px] sm:bottom-[113px] xl:top-[100px] -right-[15px] sm:right-0 xl:right-[30px] z-40;
+  @apply w-[170px] sm:w-[220px] xl:w-[450px] h-[210px] sm:h-[300px] xl:h-[576px] absolute bottom-[90px] sm:bottom-[113px] xl:top-[100px] right-0 xl:right-[30px] z-40;
 }
 
 .paper-style {
-  @apply w-[550px] lg:w-[550px] h-[650px] lg:h-[750px] mt-9 sm:mt-3 xl:-mt-[70px];
+  @apply w-full max-w-[400px] h-[475px] lg:h-[500px] xl:h-[575px];
+}
+
+.text-style {
+  @apply max-w-[235px] lg:max-w-[255px] text-gray-500 absolute top-[90px] sm:top-[96px] lg:top-[170px] xl:top-[88px] left-[87px] sm:left-[78px] lg:left-[96px] text-[16px] lg:text-[19px];
 }
 
 .boyImage-style {
-  @apply absolute -top-[214px] sm:-top-[253px] xl:-top-[345px] right-[102px] sm:right-[175px] xl:right-[125px] w-[200px] sm:w-[300px] xl:w-[450px] h-[250px] sm:h-[300px] xl:h-[400px] z-30;
+  @apply absolute top-[-214px] sm:top-[-253px] md:top-[-294px] 2xl:top-[-345px] right-[102px] sm:right-[175px] md:right-[157px] 2xl:right-[125px] w-[200px] sm:w-[300px] md:w-[350px] 2xl:w-[450px] h-[250px] sm:h-[300px] md:h-[350px] 2xl:h-[400px] z-30;
 }
 
 .sharon-text {
-  @apply absolute z-50 top-[65px] sm:top-[84px] xl:top-[120px] left-[20px] sm:left-[55px] xl:left-[45px] text-[16px] xl:text-[22px] w-[335px] sm:w-[478px] xl:w-[580px] leading-5 sm:leading-6 xl:leading-8 text-center;
+  @apply absolute z-50 top-[65px] sm:top-[100px] xl:top-[120px] left-[20px] sm:left-[105px] xl:left-[45px] text-[16px] xl:text-[22px] max-w-[335px] sm:max-w-[478px] xl:max-w-[580px] leading-5 sm:leading-6 xl:leading-8 text-center;
 }
 </style>

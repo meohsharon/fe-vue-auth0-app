@@ -43,19 +43,18 @@
       <MenuItems
         class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
       >
-        <div class="px-4 py-3 block sm:hidden">
-          <a href="/home">Home</a>
+        <div class="px-4 py-3 block sm:hidden" v-for="nav in navigation">
+          <a :href="nav.target">{{ nav.text }}</a>
         </div>
-        <div class="px-4 py-3 block sm:hidden">
-          <a href="/home">My Profile</a>
-        </div>
-        <div class="px-4 py-3">
-          <p class="text-sm">Signed in as</p>
-          <p class="truncate text-sm font-medium text-gray-900">
-            {{ user?.email }}
-          </p>
-        </div>
+
         <div class="py-1">
+          <div class="px-4 py-3">
+            <p class="text-sm">Signed in as</p>
+            <p class="truncate text-sm font-medium text-gray-900">
+              {{ user?.email }}
+            </p>
+          </div>
+
           <MenuItem v-slot="{ active }">
             <button
               type="submit"
@@ -79,6 +78,7 @@ import { computed } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import { navigation } from "@helpers/lovs";
 
 const auth0 = useAuth0();
 const { logout } = auth0;

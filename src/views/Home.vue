@@ -8,7 +8,9 @@
     </p>
   </div>
 
+  <!-- <a href="map"> -->
   <Avatar />
+  <!-- </a> -->
 </template>
 
 <script setup lang="ts">

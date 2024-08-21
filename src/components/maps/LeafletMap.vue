@@ -1,5 +1,21 @@
 <template>
-  <div id="map"></div>
+  <!-- SOURCE: https://tailwindui.com/components/ecommerce/components/product-quickviews -->
+  <div class="relative z-10" role="dialog" aria-modal="true">
+    <!--
+    Background backdrop, show/hide based on modal state.
+
+    Entering: "ease-out duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "ease-in duration-200"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div id="map"></div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
