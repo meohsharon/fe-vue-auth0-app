@@ -1,19 +1,7 @@
 <template>
-  <div class="flex items-center justify-between rounded border-b-2">
-    <!-- LEFT -->
-    <div class="flex items-center">
-      <img
-        class="sm:ml-8 h-14 md:h-24"
-        src="@assets/img/logo-small.ico"
-        alt="MeOH"
-      />
-      <div class="flex max-w-[180px] sm:max-w-full">
-        <span class="text-gray-600 text-xs md:text-base ml-4"
-          >Bridge between electron and molecule
-        </span>
-      </div>
-    </div>
-
+  <div
+    class="absolute inset-y-0 right-8 md:right-6 pt-8 md:pt-10 flex items-center"
+  >
     <!-- CONDITIONAL NAVIGATION -->
     <div v-if="isAuthenticated" class="flex items-center sm:mr-8">
       <TopNavigation v-show="showTopNavigation" />
@@ -31,8 +19,8 @@
 import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 
+import TopNavigation from "@components/TopNavigation.vue";
 import LoginButton from "@components/identity/LoginButton.vue";
-import TopNavigation from "@components/TopNavigationWhite.vue";
 import LogoutButtonWithProfile from "@components/identity/LogoutButtonWithProfile.vue";
 
 const { isAuthenticated } = useAuth0();

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="!isLoading"
-    class="flex h-full items-center justify-center align-middle mt-12 text-2xl sm:text-3xl"
+    class="flex h-full items-center justify-center align-middle text-xl sm:text-2xl"
   >
     <p class="max-w-[300px] sm:max-w-full text-center">
       Hello {{ user.name }}. You are Logged In!

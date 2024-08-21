@@ -1,8 +1,8 @@
 import { authGuard } from "@auth0/auth0-vue";
 import { createRouter, createWebHistory } from "vue-router";
 
-const Landing = () => import("@views/LandingPageAvatars.vue");
-// const Home = () => import("@views/Home.vue");
+const Landing = () => import("@views/LandingPage.vue");
+const Home = () => import("@views/Home.vue");
 const Profile = () => import("@views/Profile.vue");
 const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
