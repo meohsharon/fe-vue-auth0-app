@@ -1,2 +1,2 @@
-export * from "./useCommitText"
-export * from "./useUnixFS"
+export * from "./useCommitText";
+export * from "./useUnixFS";

@@ -7,6 +7,6 @@ import { HeliaProviderPlugin } from "./plugins/HeliaProviderPlugin";
 
 const app = createApp(App);
 
-app.use(router).use(auth0).use(HeliaProviderPlugin)
+app.use(router).use(auth0).use(HeliaProviderPlugin);
 
 app.mount("#app");

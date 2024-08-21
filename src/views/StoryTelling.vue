@@ -20,11 +20,16 @@
           alt="Text Image"
           class="text-image"
         />
-        <img src="@/assets/img/story-telling/boy.png" alt="Boy Image" class="boy-image" />
+        <img
+          src="@/assets/img/story-telling/boy.png"
+          alt="Boy Image"
+          class="boy-image"
+        />
         <p v-if="currentPage === 1" class="storytelling-title">Sharon</p>
         <p v-if="currentPage === 1" class="storytelling-description">
-          Pick your location on the map and complete your address! Make sure to confirm
-          all information is correct and once that’s done, let’s go plant your tree.
+          Pick your location on the map and complete your address! Make sure to
+          confirm all information is correct and once that’s done, let’s go
+          plant your tree.
         </p>
       </div>
     </div>
@@ -44,7 +49,9 @@
         alt="Forest background"
         class="w-full xl:w-[1400px] h-screen xl:h-[700px]"
       />
-      <div class="absolute top-[100px] left-0 flex flex-row xl:gap-[50px] xl:pl-[85px]">
+      <div
+        class="absolute top-[100px] left-0 flex flex-row xl:gap-[50px] xl:pl-[85px]"
+      >
         <div class="relative z-40">
           <img
             src="@/assets/img/story-telling/paper.png"
@@ -52,20 +59,22 @@
             class="paper-style"
           />
           <p v-if="currentPage === 2" class="text-style">
-            There are three parts to any tree: the branches and the leaves, the trunk, and
-            lastly the roots. The branches and leaves represent your connection with other
-            users. You can customize the branches and the leaves to your liking later in
-            the game.
+            There are three parts to any tree: the branches and the leaves, the
+            trunk, and lastly the roots. The branches and leaves represent your
+            connection with other users. You can customize the branches and the
+            leaves to your liking later in the game.
           </p>
           <p v-if="currentPage === 3" class="text-style">
-            Now let’s move on to the trunk! It represents the core of your business. Each
-            ring is a piece of information regarding your business. The more information
-            you provide regarding your business’s operations, the sturdier it’ll get.
+            Now let’s move on to the trunk! It represents the core of your
+            business. Each ring is a piece of information regarding your
+            business. The more information you provide regarding your business’s
+            operations, the sturdier it’ll get.
           </p>
           <p v-if="currentPage === 4" class="text-style">
-            Lastly, you’ll be able to visualize the roots once you complete MeOh’s
-            Emission control report. There are 3 types of emissions. You’ll be able to
-            check which one your business produces the most with the report.
+            Lastly, you’ll be able to visualize the roots once you complete
+            MeOh’s Emission control report. There are 3 types of emissions.
+            You’ll be able to check which one your business produces the most
+            with the report.
           </p>
         </div>
         <div class="z-30 hidden sm:block">
@@ -126,7 +135,9 @@
       </button>
       <button
         @click="nextPage"
-        :style="{ visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible' }"
+        :style="{
+          visibility: currentPage === pages.length - 1 ? 'hidden' : 'visible',
+        }"
         :disabled="currentPage === pages.length - 1"
         class="storytelling-button"
       >
