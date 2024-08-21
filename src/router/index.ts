@@ -5,7 +5,7 @@ const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
 const Landing = () => import("@views/LandingPage.vue");
 const Home = () => import("@views/Home.vue");
-const Profile = () => import("@views/Profile.vue");
+const FileManagement = () => import("@views/FileManagement.vue");
 const StoryTelling = () => import("@views/StoryTelling.vue");
 const MapModal = () => import("@components/maps/LeafletMap.vue");
 
@@ -22,15 +22,15 @@ const routes = [
     beforeEnter: authGuard,
   },
   {
-    path: "/story",
-    name: "StoryTelling",
+    path: "/play",
+    name: "Lets Play",
     component: StoryTelling,
     beforeEnter: authGuard,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
+    path: "/ipfs",
+    name: "P2P File Management",
+    component: FileManagement,
     beforeEnter: authGuard,
   },
   // {
@@ -41,12 +41,12 @@ const routes = [
   // },
   {
     path: "/not-allowed",
-    name: "NotAllowed",
+    name: "Not Allowed",
     component: NotAllowed,
   },
   {
     path: "/:catchAll(.*)",
-    name: "NotFound",
+    name: "Not Found",
     component: NotFoundPage,
   },
 ];

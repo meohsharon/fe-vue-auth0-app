@@ -4,11 +4,11 @@ export const navigation = [
     target: "/home",
   },
   {
-    text: "Profile",
-    target: "/profile",
+    text: "IPFS",
+    target: "/ipfs",
   },
   {
-    text: "Story",
-    target: "/story",
+    text: "Lets Play",
+    target: "/play",
   },
 ];
