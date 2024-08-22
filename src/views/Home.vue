@@ -10,8 +10,7 @@
 
   <Avatar />
   <!-- <Avatar @click="showModal = true" /> -->
-
-  <MapModal :show="showModal">
+  <!-- <MapModal :show="showModal">
     <div class="relative text-right p-3">
       <button
         type="button"
@@ -23,16 +22,17 @@
 
       <OpenLayersMap />
     </div>
-  </MapModal>
+  </MapModal> -->
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import Avatar from "@components/Avatar.vue";
-import MapModal from "@components/MapModal.vue";
-import OpenLayersMap from "@components/maps/OpenLayersMap.vue";
 
 const { user, isLoading } = useAuth0();
-const showModal = ref(false);
+
+// import { ref } from "vue";
+// import MapModal from "@components/MapModal.vue";
+// import OpenLayersMap from "@components/maps/OpenLayersMap.vue";
+// const showModal = ref(false);
 </script>
