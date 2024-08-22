@@ -1,0 +1,25 @@
+<template>
+  <BaseModal :show="model">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-slate-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="show(false)"
+      >
+        X
+      </button>
+
+      <OpenLayersMap />
+    </div>
+  </BaseModal>
+</template>
+
+<script setup lang="ts">
+import BaseModal from "@components/BaseModal.vue";
+import OpenLayersMap from "@components/maps/OpenLayersMap.vue";
+
+const model = defineModel<boolean, string>();
+function show(value: boolean) {
+  model.value = value;
+}
+</script>

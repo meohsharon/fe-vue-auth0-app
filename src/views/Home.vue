@@ -9,30 +9,16 @@
   </div>
 
   <Avatar />
-  <!-- <Avatar @click="showModal = true" /> -->
-  <!-- <MapModal :show="showModal">
-    <div class="relative text-right p-3">
-      <button
-        type="button"
-        class="font-normal bg-slate-200 rounded-full w-8 m-1 p-1 font-bruno"
-        @click="showModal = false"
-      >
-        X
-      </button>
-
-      <OpenLayersMap />
-    </div>
-  </MapModal> -->
+  <!-- <Avatar @click="show = true" />
+  <MapModal v-model="show" /> -->
 </template>
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
 import Avatar from "@components/Avatar.vue";
-
 const { user, isLoading } = useAuth0();
 
 // import { ref } from "vue";
-// import MapModal from "@components/MapModal.vue";
-// import OpenLayersMap from "@components/maps/OpenLayersMap.vue";
-// const showModal = ref(false);
+// import MapModal from "@components/maps/MapModal.vue";
+// const show = ref(false);
 </script>
