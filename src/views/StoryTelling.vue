@@ -5,8 +5,24 @@
       src="@/assets/img/story-telling/map.png"
       alt="World Map"
       class="storytelling-map"
-      @click="showMap"
+      @click="showModal = true" 
     />
+
+
+  <MapModal :show="showModal">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-slate-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="showModal = false"
+      >
+        X
+      </button>
+
+      <OpenLayersMap />
+    </div>
+  </MapModal>
+
 
     <div class="storytelling-content" v-if="isTextImagePage && !isMapOpen">
       <div class="text-image-container">
@@ -197,7 +213,15 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from "vue";
+import MapModal from "@components/MapModal.vue";
+import OpenLayersMap from "@components/maps/OpenLayersMap.vue";
+
+const showModal = ref(false);
+</script>
+
+<script lang="ts">
 export default {
   name: "StoryTelling",
   data() {
