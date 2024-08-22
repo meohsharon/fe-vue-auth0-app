@@ -7,7 +7,6 @@ const Landing = () => import("@views/LandingPage.vue");
 const Home = () => import("@views/Home.vue");
 const FileManagement = () => import("@views/FileManagement.vue");
 const StoryTelling = () => import("@views/StoryTelling.vue");
-const MapModal = () => import("@components/maps/LeafletMap.vue");
 
 const routes = [
   {
@@ -23,30 +22,24 @@ const routes = [
   },
   {
     path: "/play",
-    name: "Lets Play",
+    name: "LetsPlay",
     component: StoryTelling,
     beforeEnter: authGuard,
   },
   {
     path: "/ipfs",
-    name: "P2P File Management",
+    name: "FileManagement",
     component: FileManagement,
     beforeEnter: authGuard,
   },
-  // {
-  //   path: "/map",
-  //   name: "MapModal",
-  //   component: MapModal,
-  //   beforeEnter: authGuard,
-  // },
   {
     path: "/not-allowed",
-    name: "Not Allowed",
+    name: "NotAllowed",
     component: NotAllowed,
   },
   {
     path: "/:catchAll(.*)",
-    name: "Not Found",
+    name: "NotFound",
     component: NotFoundPage,
   },
 ];

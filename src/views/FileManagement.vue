@@ -8,15 +8,11 @@
     </p>
   </section>
 
-  <section
-    class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8"
-  >
+  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
     <TextCommiter />
   </section>
 
-  <section
-    class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8"
-  >
+  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
     <!-- <UnixFSManager /> -->
   </section>
 </template>
