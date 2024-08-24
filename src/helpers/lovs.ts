@@ -7,8 +7,8 @@ export const navigation = [
     text: "IPFS",
     target: "/ipfs",
   },
-  {
-    text: "Lets Play",
-    target: "/play",
-  },
+  // {
+  //   text: "Lets Play",
+  //   target: "/play",
+  // },
 ];

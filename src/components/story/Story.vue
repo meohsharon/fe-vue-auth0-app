@@ -43,4 +43,3 @@ defineComponent({
   },
 });
 </script>
-<!-- class="lg:w-[100vw] xl:h-[80vh] md:w-[100vw] lg:max-w-fit xl:max-w-screen" -->

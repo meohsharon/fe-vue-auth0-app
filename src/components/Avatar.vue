@@ -1,7 +1,7 @@
 <template>
-  <div class="flex h-full justify-center text-3xl mt-12">
+  <div class="flex justify-center mt-12">
     <img
-      class="inline-block border border-slate-300 w-1/2"
+      class="inline-block border w-1/2 md:w-1/4"
       :src="avatarSrc"
       alt="avatar"
     />
