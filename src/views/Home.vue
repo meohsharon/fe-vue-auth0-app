@@ -15,8 +15,12 @@
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
-import Avatar from "@components/Avatar.vue";
 const { user, isLoading } = useAuth0();
+
+import MapClick from "@components/maps/MapClick.vue";
+const imgSrc = new URL(`/src/assets/game/scene1.png`, import.meta.url).href;
+
+import Avatar from "@components/Avatar.vue";
 
 // import { ref } from "vue";
 // import MapModal from "@components/maps/MapModal.vue";

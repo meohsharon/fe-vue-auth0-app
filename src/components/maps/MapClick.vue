@@ -3,7 +3,7 @@
     <img
       :src="imageSrc"
       alt="Hotspot Image"
-      class="image"
+      class="lg:w-[100vw] xl:h-[80vh] md:w-[100vw] lg:max-w-fit xl:max-w-screen"
       @click="handleClick($event)"
     />
     <div
@@ -12,34 +12,39 @@
       :key="index"
       :style="{ top: hotspot.top, left: hotspot.left }"
       :data-action="hotspot.action"
-      @click="performAction(hotspot.action, index)"
+      @click="show = true"
     >
       <span :data-action="hotspot.label"></span>
     </div>
   </div>
+
+  <MapModal v-model="show" />
+
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from "vue";
+import MapModal from "@components/maps/MapModal.vue";
+const show = ref(false);
+</script>
+
+<script lang="ts">
 export default {
-  name: "ImageHotspots",
+  name: "MapClick",
   props: {
-    imageUrl: String,
+    src: String,
   },
   data() {
     return {
-      imageSrc: this.imageUrl,
+      imageSrc: this.src,
       isZoomIn: false,
       hotspots: [
         {
-          top: "20%",
-          left: "30%",
-          action: "showMessage",
-          label: "Show Message",
+          top: "40%",
+          left: "12%",
+          action: "navigateToView",
+          label: "Drop Pin",
         },
-        { top: "50%", left: "50%", action: "toggleZoom", label: "Zoom In" },
-        { top: "70%", left: "20%", action: "navigateToView", label: "Go Back" },
-        { top: "80%", left: "60%", action: "showForm", label: "Show Form" },
-        { top: "40%", left: "80%", action: "showAlert", label: "Show Alert" },
       ],
     };
   },
@@ -47,36 +52,13 @@ export default {
   methods: {
     performAction(action, index) {
       switch (action) {
-        case "showMessage":
-          alert("Hello!");
-          break;
-        case "toggleZoom":
-          this.toggleZoom(index);
-          break;
         case "navigateToView":
           // this.$router.push({ name: "AnotherView" });
           this.$router.go(-1);
           break;
-        case "showForm":
-          // Implement form display logic here
-          break;
-        case "showAlert":
-          alert("You clicked a hotspot!");
-          break;
         default:
           console.log("Unknown action");
       }
-    },
-
-    toggleZoom(index) {
-      if (this.isZoomedIn) {
-        this.zoomOut();
-        this.hotspots[index].label = "Zoom In";
-      } else {
-        this.zoomIn();
-        this.hotspots[index].label = "Zoom Out";
-      }
-      this.isZoomedIn = !this.isZoomedIn;
     },
     zoomIn() {
       this.$refs.imageContainer.style.transform = "scale(1.5)";
@@ -96,8 +78,9 @@ export default {
 <style scoped>
 .image-container {
   position: relative;
-  width: 100%;
-  max-width: 800px;
+  /* width: 100%;
+  height: 100%; */
+  /* max-width: 800px; */
   margin: 0 auto;
   overflow: hidden;
 }
@@ -116,8 +99,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.8em;
-    height: 1.8em;
+    width: 10em;
+    height: 10em;
     background: #cf00f1;
     border-radius: 50%;
     animation: pulse 3s ease infinite;
