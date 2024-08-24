@@ -6,7 +6,7 @@ const NotFoundPage = () => import("@views/NotFound.vue");
 const Landing = () => import("@views/LandingPage.vue");
 const Home = () => import("@views/Home.vue");
 const FileManagement = () => import("@views/FileManagement.vue");
-const StoryTelling = () => import("@views/Story.vue");
+const StoryTelling = () => import("@components/story/Story.vue");
 
 const routes = [
   {

@@ -1,94 +1,28 @@
 <template>
-  <div class="image-container" ref="imageContainer">
-    <img
-      :src="imageSrc"
-      alt="Hotspot Image"
-      class="lg:w-[100vw] xl:h-[80vh] md:w-[100vw] lg:max-w-fit xl:max-w-screen"
-      @click="handleClick($event)"
-    />
+  <div ref="imageContainer">
+    <img :src="src" alt="Hotspot Image" class="justify-self-auto" />
     <div
-      v-for="(hotspot, index) in hotspots"
-      class="hotspot"
-      :key="index"
-      :style="{ top: hotspot.top, left: hotspot.left }"
-      :data-action="hotspot.action"
+      class="hotspot top-32 left-20 sm:top-32 sm:left-20 md:top-64 md:left-36 lg:top-[45%] lg:left-52 xl:top-90 xl:left-[20%] 2xl:left-[30%]"
       @click="show = true"
     >
-      <span :data-action="hotspot.label"></span>
+      <span class="w-12 h-12 md:w-20 md:h-20 xl:w-44 xl:h-44"></span>
     </div>
   </div>
 
   <MapModal v-model="show" />
-
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import MapModal from "@components/maps/MapModal.vue";
 const show = ref(false);
-</script>
 
-<script lang="ts">
-export default {
-  name: "MapClick",
-  props: {
-    src: String,
-  },
-  data() {
-    return {
-      imageSrc: this.src,
-      isZoomIn: false,
-      hotspots: [
-        {
-          top: "40%",
-          left: "12%",
-          action: "navigateToView",
-          label: "Drop Pin",
-        },
-      ],
-    };
-  },
-
-  methods: {
-    performAction(action, index) {
-      switch (action) {
-        case "navigateToView":
-          // this.$router.push({ name: "AnotherView" });
-          this.$router.go(-1);
-          break;
-        default:
-          console.log("Unknown action");
-      }
-    },
-    zoomIn() {
-      this.$refs.imageContainer.style.transform = "scale(1.5)";
-      this.$refs.imageContainer.style.transition = "transform 0.3s ease-in-out";
-    },
-    zoomOut() {
-      this.$refs.imageContainer.style.transform = "scale(1)";
-      this.$refs.imageContainer.style.transition = "transform 0.3s ease-in-out";
-    },
-    handleClick(event) {
-      console.log("Image clicked at:", event.clientX, event.clientY);
-    },
-  },
-};
+defineProps<{
+  src: string;
+}>();
 </script>
 
 <style scoped>
-.image-container {
-  position: relative;
-  /* width: 100%;
-  height: 100%; */
-  /* max-width: 800px; */
-  margin: 0 auto;
-  overflow: hidden;
-}
-.image {
-  width: 100%;
-  height: auto;
-}
-
 .hotspot {
   z-index: 2;
   position: absolute;
@@ -97,10 +31,6 @@ export default {
   span {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10em;
-    height: 10em;
     background: #cf00f1;
     border-radius: 50%;
     animation: pulse 3s ease infinite;
@@ -216,13 +146,5 @@ export default {
     opacity: 0;
     transform: scale(2);
   }
-}
-
-.hotspot-marker {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: rgba(255, 0, 0, 0.8);
 }
 </style>

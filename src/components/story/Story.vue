@@ -1,18 +1,17 @@
 <template>
+  <!-- Carousel Source: https://ismail9k.github.io/vue3-carousel/getting-started.html -->
   <Carousel>
     <Slide v-for="slide in 3" :key="slide">
-      <div class="flex xl:justify-center">
-        <div v-if="slide === 1">
-          <MapClick :src="imgSrc(slide)" />
-        </div>
+      <div id="mapClick" v-if="slide === 1">
+        <MapClick :src="imgSrc(slide)" />
+      </div>
 
-        <div v-else>
-          <img
-            class="lg:w-[100vw] xl:h-[80vh] md:w-[100vw] lg:max-w-fit xl:max-w-screen"
-            :src="imgSrc(slide)"
-            :alt="`scene${slide}`"
-          />
-        </div>
+      <div id="justImg" v-else>
+        <img
+          class="justify-self-auto"
+          :src="imgSrc(slide)"
+          :alt="`scene${slide}`"
+        />
       </div>
     </Slide>
 
@@ -24,11 +23,11 @@
 </template>
 
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
+
 import { defineComponent } from "vue";
 import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
 import MapClick from "@components/maps/MapClick.vue";
-
-import "vue3-carousel/dist/carousel.css";
 
 const imgSrc = (index: number) => {
   return new URL(`/src/assets/game/scene${index}.png`, import.meta.url).href;
@@ -44,3 +43,4 @@ defineComponent({
   },
 });
 </script>
+<!-- class="lg:w-[100vw] xl:h-[80vh] md:w-[100vw] lg:max-w-fit xl:max-w-screen" -->
