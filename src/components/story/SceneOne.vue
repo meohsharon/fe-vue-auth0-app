@@ -1,12 +1,12 @@
 <template>
-  <div ref="imageContainer">
-    <img :src="src" alt="Hotspot Image" class="justify-self-auto" />
-    <div
-      class="hotspot top-32 left-20 sm:top-32 sm:left-20 md:top-64 md:left-36 lg:top-[45%] lg:left-52 xl:top-90 xl:left-[20%] 2xl:left-[30%]"
-      @click="show = true"
-    >
-      <span class="w-12 h-12 md:w-20 md:h-20 xl:w-44 xl:h-44"></span>
-    </div>
+  <img :src="src" alt="Scene One" />
+  <div
+    class="hotspot top-36 left-24 sm:top-32 sm:left-20 md:top-80 md:left-48 lg:top-[45%] lg:left-52 xl:top-90 xl:left-[20%] 2xl:left-[20%]"
+    @click="show = true"
+  >
+    <span
+      class="w-12 h-12 md:w-20 md:h-20 xl:w-20 xl:h-20 lg:w-20 lg:h-20"
+    ></span>
   </div>
 
   <MapModal v-model="show" />

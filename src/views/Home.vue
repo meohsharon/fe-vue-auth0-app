@@ -1,11 +1,11 @@
 <template>
-  <div v-if="!isLoading && !show" class="flex-grow w-full text-center">
+  <div v-if="!isLoading && !show" class="flex-grow text-center">
     <p class="text-sm sm:text-base">Hello {{ user.name }}</p>
     <p class="text-xl sm:text-2xl p-6">Click your avatar to start the story!</p>
     <Avatar @click="show = true" />
   </div>
 
-  <Story v-if="show" />
+  <Story v-if="show" class="mx-auto sm:w-full md:w-full lg:w-full xl:w-[65%]" />
 </template>
 
 <script setup lang="ts">
