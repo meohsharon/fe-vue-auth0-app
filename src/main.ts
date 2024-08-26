@@ -13,7 +13,7 @@ import { HeliaProviderPlugin } from "@helpers/plugins/heliaProvider.plugin";
 const app = createApp(App);
 const pinia = createPinia();
 
-app.use(router).use(auth0).use(pinia).use(OpenLayersMap /*, options */);
-//   .use(HeliaProviderPlugin);
+app.use(router).use(auth0).use(pinia).use(OpenLayersMap /*, options */)
+  .use(HeliaProviderPlugin);
 
 app.mount("#app");
