@@ -4,11 +4,11 @@
       <h3
         class="mt-4 mb-8 md:mb-12 text-sm md:text-xl font-semibold leading-6 text-gray-900 border-b-0 md:border-b-2"
       >
-        1. Add Text Data to IPFS Node
+        1. Add File to IPFS Node
       </h3>
 
       <div class="mt-5 justify-center md:flex md:justify-center">
-        <div class="w-full sm:max-w-xs">
+        <!-- <div class="w-full sm:max-w-xs">
           <label for="text" class="sr-only">Text</label>
           <input
             id="commitText"
@@ -18,12 +18,14 @@
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Hello MeOH World"
           />
-        </div>
+        </div> -->
+
+        <FileUpload />
 
         <button
           id="commitTextButton"
           type="submit"
-          @click="handleCommitText"
+          @click="handleCommitFile"
           class="mt-3 sm:ml-3 sm:mt-0 px-3 py-2 inline-flex justify-center w-1/2 sm:w-auto rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Commit
@@ -69,11 +71,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useCommitText } from "@helpers/heliaApi/useCommitText";
+import FileUpload from "@components/FileUpload.vue";
 
 const { cid, commitText, commitedText, fetchCommitedText } = useCommitText();
 const textToCommit = ref();
 
-const handleCommitText = async () => {
+const handleCommitFile = async () => {
   await commitText(textToCommit.value);
 };
 </script>
