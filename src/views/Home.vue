@@ -1,19 +1,38 @@
 <template>
-  <div v-if="!isLoading && !show" class="flex-grow text-center">
-    <p class="text-sm sm:text-base">Hello {{ user.name }}</p>
-    <p class="text-xl sm:text-2xl p-6">Click your avatar to start the story!</p>
-    <Avatar @click="show = true" />
-  </div>
+  <section class="flex justify-center p-0 md:p-24">
+    <p
+      id="heliaStatus"
+      :style="{ color: `${readyMessage ? heliaStatusColor : 'transparent'}` }"
+    >
+      Helia is {{ readyMessage }} to access IPFS
+    </p>
+  </section>
 
-  <Story v-if="show" class="mx-auto sm:w-full md:w-full lg:w-full xl:w-[65%]" />
+  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
+    <TextCommiter />
+  </section>
+
+  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
+    <!-- <UnixFSManager /> -->
+  </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useAuth0 } from "@auth0/auth0-vue";
-import Avatar from "@components/Avatar.vue";
-import Story from "@components/story/Story.vue";
+import { inject, computed } from "vue";
+import TextCommiter from "@components/ipfs/TextCommiter.vue";
+import UnixFSManager from "@components/ipfs/UnixFSManager.vue";
 
-const show = ref(false);
-const { user, isLoading } = useAuth0();
+const { loading, error } = inject("HeliaProvider") as any;
+let heliaStatusColor = undefined;
+const readyMessage = computed(() => {
+  if (loading.value == true) {
+    heliaStatusColor = "yellow";
+    return "Loading...";
+  }
+  if (loading.value == false && error.value.length == 0) {
+    heliaStatusColor = "green";
+    return "Ready";
+  }
+  return "Failing";
+});
 </script>

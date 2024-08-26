@@ -4,8 +4,8 @@ import { createRouter, createWebHistory } from "vue-router";
 const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
 const Landing = () => import("@views/LandingPage.vue");
+const AvatarPicker = () => import("@views/AvatarPicker.vue");
 const Home = () => import("@views/Home.vue");
-const FileManagement = () => import("@views/FileManagement.vue");
 
 const routes = [
   {
@@ -14,15 +14,14 @@ const routes = [
     component: Landing,
   },
   {
+    path: "/pick-avatar",
+    name: "AvatarPicker",
+    component: AvatarPicker,
+  },
+  {
     path: "/home",
     name: "Home",
     component: Home,
-    beforeEnter: authGuard,
-  },
-  {
-    path: "/ipfs",
-    name: "FileManagement",
-    component: FileManagement,
     beforeEnter: authGuard,
   },
   {

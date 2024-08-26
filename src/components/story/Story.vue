@@ -1,7 +1,7 @@
 <template>
   <!-- Carousel Source: https://ismail9k.github.io/vue3-carousel/getting-started.html -->
-  <Carousel>
-    <Slide v-for="slide in 3" :key="slide">
+  <Carousel @slide-end="handleSlideEnd">
+    <Slide v-for="slide in totalSlides" :key="slide">
       <div v-if="slide === 1" id="sceneOne">
         <SceneOne :src="imgSrc(slide)" />
       </div>
@@ -21,15 +21,25 @@
 import "vue3-carousel/dist/carousel.css";
 
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 import SceneOne from "./SceneOne.vue";
+
+const router = useRouter();
+const totalSlides = 3;
 
 const imgSrc = (index: number) => {
   return new URL(`/src/assets/game/scene${index}.png`, import.meta.url).href;
 };
 
+const handleSlideEnd = (data) => {
+  if (data.currentSlideIndex === totalSlides - 1) {
+    setTimeout(() => router.replace({ path: "/pick-avatar" }), 5000);
+  }
+};
+
 defineComponent({
-  name: "Basic",
+  name: "Story",
   components: {
     Carousel,
     Slide,
