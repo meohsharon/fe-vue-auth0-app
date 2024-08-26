@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { View } from "ol";
 import { ObjectEvent } from "ol/Object";
 import hereIcon from "@assets/img/you-are-here.png";
@@ -61,6 +61,16 @@ const onMapClick = (event) => {
 
   emit("map-click", coordinate);
 };
+
+onMounted(() => {
+  const markerPosition = localStorage.getItem("treeLocation");
+
+  if (markerPosition) {
+    coordinate.value = JSON.parse(markerPosition);
+    view.value?.setCenter(coordinate.value);
+    view.value?.setZoom(12);
+  }
+});
 
 const geoLocChange = (event: ObjectEvent) => {
   position.value = event.target.getPosition();
