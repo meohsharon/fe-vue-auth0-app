@@ -14,7 +14,7 @@
           <ol-geom-point :coordinates="coordinate"></ol-geom-point>
           <ol-style>
             <ol-style-box>
-              <ol-style-icon :src="hereIcon" scale="0.25" />
+              <ol-style-icon :src="treeMarker" scale="0.25" />
             </ol-style-box>
           </ol-style>
         </ol-feature>
@@ -43,6 +43,7 @@ import { onMounted, ref } from "vue";
 import { View } from "ol";
 import { ObjectEvent } from "ol/Object";
 import hereIcon from "@assets/img/you-are-here.png";
+import treeMarker from "@assets/img/tree-marker.png";
 
 const zoom = ref(8);
 const center = ref([40, 40]);
