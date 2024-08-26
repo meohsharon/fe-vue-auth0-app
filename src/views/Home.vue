@@ -1,43 +1,27 @@
 <template>
-  <section class="flex justify-center p-0 md:p-24">
-    <p
-      id="heliaStatus"
-      :style="{ color: `${readyMessage ? heliaStatusColor : 'transparent'}` }"
+  <div v-if="!isLoading && !show" class="flex-grow text-center">
+    <p class="text-sm sm:text-base">Hello {{ user.name }}</p>
+    <Avatar />
+
+    <button
+      id="commitTextButton"
+      type="submit"
+      @click="show = true"
+      class="mt-3 sm:ml-3 sm:mt-8 px-3 py-2 inline-flex justify-center w-1/2 sm:w-auto rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
     >
-      Helia is {{ readyMessage }} to access IPFS
-    </p>
-  </section>
+      Access IPFS
+    </button>
+  </div>
 
-  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
-    <TextCommiter />
-  </section>
-
-  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
-    <FileCommiter />
-  </section>
-
-  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
-    <!-- <UnixFSManager /> -->
-  </section>
+  <FileManager v-if="show" />
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from "vue";
-import TextCommiter from "@components/ipfs/TextCommiter.vue";
-import FileCommiter from "@components/ipfs/FileCommiter.vue";
-import UnixFSManager from "@components/ipfs/UnixFSManager.vue";
+import { ref } from "vue";
+import { useAuth0 } from "@auth0/auth0-vue";
+import Avatar from "@components/Avatar.vue";
+import FileManager from "@components/ipfs/FileManager.vue";
 
-const { loading, error } = inject("HeliaProvider") as any;
-let heliaStatusColor = undefined;
-const readyMessage = computed(() => {
-  if (loading.value == true) {
-    heliaStatusColor = "yellow";
-    return "Loading...";
-  }
-  if (loading.value == false && error.value.length == 0) {
-    heliaStatusColor = "green";
-    return "Ready";
-  }
-  return "Failing";
-});
+const show = ref(false);
+const { user, isLoading } = useAuth0();
 </script>
