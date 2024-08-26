@@ -53,10 +53,13 @@ const map = ref(null);
 const position = ref([]);
 
 const coordinate = ref(null);
+const emit = defineEmits(["map-click"]);
 
 const onMapClick = (event) => {
   const map = event.target;
   coordinate.value = map.getEventCoordinate(event.originalEvent);
+
+  emit("map-click", coordinate);
 };
 
 const geoLocChange = (event: ObjectEvent) => {
