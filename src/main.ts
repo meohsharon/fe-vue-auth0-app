@@ -18,6 +18,6 @@ app
   .use(auth0)
   .use(pinia)
   .use(OpenLayersMap /*, options */)
-  .use(HeliaProviderPlugin);
+//   .use(HeliaProviderPlugin);
 
 app.mount("#app");
