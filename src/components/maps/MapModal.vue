@@ -42,7 +42,12 @@ const handleMapClick = (event) => {
 const saveLocation = () => {
   if (marker.value) {
     localStorage.setItem("treeLocation", JSON.stringify(marker.value));
+    closeMapDialog();
   }
+};
+
+const closeMapDialog = () => {
+  show(false)
 };
 
 </script>
