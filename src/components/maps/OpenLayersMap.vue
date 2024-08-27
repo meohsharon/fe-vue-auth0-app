@@ -86,6 +86,8 @@ const goToTreeLocation = () => {
   if (treeLocation.value) {
     view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
+  } else {
+    alert('You havent planted a tree yet')
   }
 };
 
