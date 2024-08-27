@@ -115,7 +115,7 @@ contextMenuItems.value = [
     }, // `center` is your callback function
   },
   {
-    text: "Add a Marker",
+    text: "Plant A Tree",
     classname: "some-style-class", // you can add this icon with a CSS class
     // instead of `icon` property (see next line)
     icon: treeMarker, // this can be relative or absolute
