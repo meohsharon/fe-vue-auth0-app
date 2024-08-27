@@ -1,12 +1,7 @@
 <template>
   <!-- Source: https://vue3openlayers.netlify.app/ -->
   <ol-map ref="map" style="height: 70vh" :controls="[]" @click="onMapClick">
-    <ol-view
-      ref="view"
-      :center="center"
-      :zoom="zoom"
-      :projection="projection"
-    />
+    <ol-view ref="view" :center="center" :zoom="zoom" :projection="projection" />
 
     <ol-tile-layer>
       <ol-source-osm />
@@ -40,6 +35,15 @@
         </ol-vector-layer>
       </template>
     </ol-geolocation>
+
+    <div class="control-bar-container">
+      <ol-control-bar>
+        <ol-control-button @click="goToCurrentLocation">
+          My Current Location
+        </ol-control-button>
+        <ol-control-button @click="goToTreeLocation"> My Tree Location </ol-control-button>
+      </ol-control-bar>
+    </div>
   </ol-map>
 </template>
 
@@ -83,4 +87,38 @@ const geoLocChange = (event: ObjectEvent) => {
   view.value?.setCenter(event.target?.getPosition());
   view.value?.setZoom(12);
 };
+
+const goToCurrentLocation = () => {
+  if (position.value) {
+    view.value?.setCenter(position.value);
+    view.value?.setZoom(12);
+  }
+};
+
+const goToTreeLocation = () => {
+  if (coordinate.value) {
+    view.value?.setCenter(coordinate.value);
+    view.value?.setZoom(12);
+  }
+};
 </script>
+
+<style scoped>
+.control-bar-container {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #b7c5c2;
+  background-color: rgb(209, 211, 206);
+  border-radius: 15px;
+}
+</style>
