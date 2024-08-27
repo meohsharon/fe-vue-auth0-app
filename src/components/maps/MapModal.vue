@@ -16,7 +16,7 @@
       >
         I Planted A Tree
       </button>
-      <OpenLayersMap @map-click="handleMapClick"/>
+      <OpenLayersMap @map-click="handleMapClick" />
     </div>
   </BaseModal>
 </template>
@@ -47,7 +47,6 @@ const saveLocation = () => {
 };
 
 const closeMapDialog = () => {
-  show(false)
+  show(false);
 };
-
 </script>

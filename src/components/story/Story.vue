@@ -6,13 +6,17 @@
         <SceneOne :src="imgSrc(slide)" />
       </div>
 
+      <div v-else-if="slide === totalSlides" id="sceneFour">
+        <AvatarPicker />
+      </div>
+
       <div v-else id="otherScenes">
         <img :src="imgSrc(slide)" :alt="`scene${slide}`" />
       </div>
     </Slide>
 
     <template #addons>
-      <Navigation />
+      <Navigation v-if="showNavigation" />
     </template>
   </Carousel>
 </template>
@@ -20,13 +24,15 @@
 <script setup lang="ts">
 import "vue3-carousel/dist/carousel.css";
 
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 import SceneOne from "./SceneOne.vue";
+import AvatarPicker from "@components/identity/AvatarPicker.vue";
 
 const router = useRouter();
-const totalSlides = 3;
+const totalSlides = 4;
+let showNavigation = ref(true);
 
 const imgSrc = (index: number) => {
   return new URL(`/src/assets/game/scene${index}.png`, import.meta.url).href;
@@ -34,7 +40,8 @@ const imgSrc = (index: number) => {
 
 const handleSlideEnd = (data) => {
   if (data.currentSlideIndex === totalSlides - 1) {
-    setTimeout(() => router.replace({ path: "/pick-avatar" }), 5000);
+    showNavigation.value = false;
+    // setTimeout(() => router.replace({ path: "/pick-avatar" }), 5000);
   }
 };
 

@@ -13,19 +13,16 @@
   </section>
 
   <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
-    <FileCommiter />
-  </section>
-
-  <section class="flex justify-center h-fit mt-10 md:m-16 p-0 md:p-8">
-    <!-- <UnixFSManager /> -->
+    <UnixFSManager />
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref, inject, computed } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
+
+// https://github.com/ipfs-examples/helia-examples/tree/main/examples/helia-101
 import TextCommiter from "@components/ipfs/TextCommiter.vue";
-import FileCommiter from "@components/ipfs/FileCommiter.vue";
 import UnixFSManager from "@components/ipfs/UnixFSManager.vue";
 
 const show = ref(false);
@@ -45,3 +42,5 @@ const readyMessage = computed(() => {
   return "Failing";
 });
 </script>
+
+<!-- TO View on IPFS: https://ipfs.io/ipfs/<CID> -->

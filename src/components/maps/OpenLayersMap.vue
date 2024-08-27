@@ -1,7 +1,12 @@
 <template>
   <!-- Source: https://vue3openlayers.netlify.app/ -->
   <ol-map ref="map" style="height: 70vh" :controls="[]" @click="onMapClick">
-    <ol-view ref="view" :center="center" :zoom="zoom" :projection="projection" />
+    <ol-view
+      ref="view"
+      :center="center"
+      :zoom="zoom"
+      :projection="projection"
+    />
 
     <ol-tile-layer>
       <ol-source-osm />

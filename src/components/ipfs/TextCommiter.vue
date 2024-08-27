@@ -7,7 +7,7 @@
         1. Add Text Data to IPFS Node
       </h3>
 
-      <div class="mt-5 justify-center md:flex md:justify-center">
+      <div class="mt-5 sm:flex sm:items-center">
         <div class="w-full sm:max-w-xs">
           <label for="text" class="sr-only">Text</label>
           <input
