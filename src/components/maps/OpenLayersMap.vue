@@ -1,17 +1,22 @@
 <template>
   <!-- Source: https://vue3openlayers.netlify.app/ -->
-  <ol-map ref="map" style="height: 70vh" :controls="[]" @click="onMapClick">
-    <ol-view ref="view" :center="center" :zoom="zoom" :projection="projection" />
+  <ol-map ref="map" style="height: 70vh" :controls="[]">
+    <ol-view
+      ref="view"
+      :center="center"
+      :zoom="zoom"
+      :projection="projection"
+    />
 
     <ol-tile-layer>
       <ol-source-osm />
     </ol-tile-layer>
     <ol-attribution-control />
 
-    <ol-vector-layer v-if="coordinate">
+    <ol-vector-layer v-if="treeLocation">
       <ol-source-vector>
         <ol-feature>
-          <ol-geom-point :coordinates="coordinate"></ol-geom-point>
+          <ol-geom-point :coordinates="treeLocation"></ol-geom-point>
           <ol-style>
             <ol-style-box>
               <ol-style-icon :src="treeMarker" scale="0.25" />
@@ -26,7 +31,7 @@
         <ol-vector-layer :zIndex="3">
           <ol-source-vector>
             <ol-feature ref="positionFeature">
-              <ol-geom-point :coordinates="position"></ol-geom-point>
+              <ol-geom-point :coordinates="currentLocation"></ol-geom-point>
               <ol-style>
                 <ol-style-icon :src="hereIcon" :scale="0.3"></ol-style-icon>
               </ol-style>
@@ -36,12 +41,16 @@
       </template>
     </ol-geolocation>
 
+    <ol-context-menu-control :items="contextMenuItems" />
+
     <div class="control-bar-container">
       <ol-control-bar>
-        <ol-control-button @click="goToCurrentLocation">
+        <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-2">
           My Current Location
         </ol-control-button>
-        <ol-control-button @click="goToTreeLocation"> My Tree Location </ol-control-button>
+        <ol-control-button @click="goToTreeLocation" class="">
+          My Tree Location
+        </ol-control-button>
       </ol-control-bar>
     </div>
   </ol-map>
@@ -49,58 +58,73 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { View } from "ol";
 import { ObjectEvent } from "ol/Object";
+import { View } from "ol";
+import { Item } from "ol-contextmenu";
+
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
 
+const map = ref(null);
 const zoom = ref(8);
 const center = ref([40, 40]);
 const projection = ref("EPSG:4326");
-
-const view = ref<View>();
-const map = ref(null);
-const position = ref([]);
-
-const coordinate = ref(null);
 const emit = defineEmits(["map-click"]);
 
-const onMapClick = (event) => {
-  const map = event.target;
-  coordinate.value = map.getEventCoordinate(event.originalEvent);
-
-  emit("map-click", coordinate);
-};
-
+const treeLocation = ref(null);
+const view = ref<View | null>(null);
 onMounted(() => {
   const markerPosition = localStorage.getItem("treeLocation");
 
   if (markerPosition) {
-    coordinate.value = JSON.parse(markerPosition);
-    view.value?.setCenter(coordinate.value);
+    treeLocation.value = JSON.parse(markerPosition);
+    view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
   }
 });
+const goToTreeLocation = () => {
+  if (treeLocation.value) {
+    view.value?.setCenter(treeLocation.value);
+    view.value?.setZoom(12);
+  }
+};
 
+const currentLocation = ref([]);
 const geoLocChange = (event: ObjectEvent) => {
-  position.value = event.target.getPosition();
+  currentLocation.value = event.target.getPosition();
   view.value?.setCenter(event.target?.getPosition());
   view.value?.setZoom(12);
 };
 
 const goToCurrentLocation = () => {
-  if (position.value) {
-    view.value?.setCenter(position.value);
+  if (currentLocation.value) {
+    view.value?.setCenter(currentLocation.value);
     view.value?.setZoom(12);
   }
 };
 
-const goToTreeLocation = () => {
-  if (coordinate.value) {
-    view.value?.setCenter(coordinate.value);
-    view.value?.setZoom(12);
-  }
-};
+const contextMenuItems = ref<Item[]>([]);
+contextMenuItems.value = [
+  {
+    text: "Center map here",
+    classname: "some-style-class", // add some CSS rules
+    callback: (val) => {
+      view.value?.setCenter(val.coordinate);
+    }, // `center` is your callback function
+  },
+  {
+    text: "Add a Marker",
+    classname: "some-style-class", // you can add this icon with a CSS class
+    // instead of `icon` property (see next line)
+    icon: treeMarker, // this can be relative or absolute
+    callback: (val) => {
+      treeLocation.value = val.coordinate;
+      localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
+      emit("map-click", treeLocation);
+    },
+  },
+  "-", // this is a separator
+];
 </script>
 
 <style scoped>
@@ -117,8 +141,9 @@ const goToTreeLocation = () => {
   padding: 5px 10px;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #b7c5c2;
-  background-color: rgb(209, 211, 206);
+  border: 1px solid #246b5c;
+  background-color: rgb(43, 163, 63);
   border-radius: 15px;
+  cursor: pointer;
 }
 </style>
