@@ -41,6 +41,7 @@
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
+import { authorizationParams } from "@helpers/lovs";
 
 const { loginWithRedirect } = useAuth0();
 const handleLogin = (avatarIndex: number) => {
@@ -48,10 +49,7 @@ const handleLogin = (avatarIndex: number) => {
     appState: {
       target: "/home",
     },
-    authorizationParams: {
-      prompt: "login",
-      avatar: avatarIndex,
-    },
+    authorizationParams,
   });
 };
 

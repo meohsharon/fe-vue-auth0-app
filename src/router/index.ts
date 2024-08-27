@@ -5,6 +5,8 @@ const NotAllowed = () => import("@views/NotAllowed.vue");
 const NotFoundPage = () => import("@views/NotFound.vue");
 const Landing = () => import("@views/LandingPage.vue");
 const Home = () => import("@views/Home.vue");
+const FileManager = () => import("@views/FileManager.vue");
+const MyTree = () => import("@views/MyTree.vue");
 
 const routes = [
   {
@@ -16,6 +18,18 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/file-manager",
+    name: "FileManager",
+    component: FileManager,
+    beforeEnter: authGuard,
+  },
+  {
+    path: "/my-tree",
+    name: "MyTree",
+    component: MyTree,
     beforeEnter: authGuard,
   },
   {

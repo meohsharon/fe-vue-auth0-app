@@ -4,7 +4,7 @@ import "vue3-openlayers/styles.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import OpenLayersMap from "vue3-openlayers";
-import { Map, Layers, Animations } from "vue3-openlayers";
+// import { Map, Layers, Animations } from "vue3-openlayers";
 
 import App from "./App.vue";
 import router from "./router";

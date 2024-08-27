@@ -1,6 +1,10 @@
 <template>
   <!-- Source: https://vue3openlayers.netlify.app/ -->
-  <ol-map ref="map" style="height: 70vh" :controls="[]">
+  <ol-map
+    ref="map"
+    :controls="[]"
+    class="h-[75vh] text-center font-bruno border-2"
+  >
     <ol-view
       ref="view"
       :center="center"
@@ -43,12 +47,14 @@
 
     <ol-context-menu-control :items="contextMenuItems" />
 
-    <div class="control-bar-container">
+    <div
+      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full text-xs w-[80%] md:w-auto lg:w-auto p-2 md:p-4 top-24 sm:top-30 md:top-52 lg:top-44 control-bar-container"
+    >
       <ol-control-bar>
-        <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-2">
+        <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
           My Current Location
         </ol-control-button>
-        <ol-control-button @click="goToTreeLocation" class="">
+        <ol-control-button @click="goToTreeLocation" class="pl-4">
           My Tree Location
         </ol-control-button>
       </ol-control-bar>
@@ -87,7 +93,7 @@ const goToTreeLocation = () => {
     view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
   } else {
-    alert('You havent planted a tree yet')
+    alert("You havent planted a tree yet");
   }
 };
 
@@ -109,14 +115,14 @@ const contextMenuItems = ref<Item[]>([]);
 contextMenuItems.value = [
   {
     text: "Center map here",
-    classname: "some-style-class", // add some CSS rules
+    classname: "context-style", // add some CSS rules
     callback: (val) => {
       view.value?.setCenter(val.coordinate);
     }, // `center` is your callback function
   },
   {
     text: "Plant A Tree",
-    classname: "some-style-class", // you can add this icon with a CSS class
+    classname: "context-style", // you can add this icon with a CSS class
     // instead of `icon` property (see next line)
     icon: treeMarker, // this can be relative or absolute
     callback: (val) => {
@@ -130,22 +136,18 @@ contextMenuItems.value = [
 </script>
 
 <style scoped>
+.context-style {
+  /* position: relative;
+  display: inline;*/
+  font-size: 32px;
+  padding: 50px;
+  background-color: rgb(43, 163, 63);
+  width: 100vw;
+}
 .control-bar-container {
-  position: absolute;
   left: 50%;
-  top: 10%;
   transform: translate(-50%, -50%);
-  z-index: 10;
-  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 500;
-  border: 1px solid #246b5c;
-  background-color: rgb(43, 163, 63);
-  border-radius: 15px;
-  cursor: pointer;
 }
 </style>

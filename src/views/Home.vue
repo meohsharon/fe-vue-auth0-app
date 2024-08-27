@@ -3,24 +3,24 @@
     <p class="text-sm sm:text-base">Hello {{ user.name }}</p>
     <Avatar />
 
-    <button
+    <!-- <button
       id="commitTextButton"
       type="submit"
       @click="show = true"
       class="mt-3 sm:ml-3 sm:mt-8 px-3 py-2 inline-flex justify-center w-1/2 sm:w-auto rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
     >
       Access IPFS
-    </button>
+    </button> -->
   </div>
 
-  <FileManager v-if="show" />
+  <!-- <IPFSManager v-if="show" /> -->
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import Avatar from "@components/Avatar.vue";
-import FileManager from "@components/ipfs/FileManager.vue";
+import IPFSManager from "@components/ipfs/IPFSManager.vue";
 
 const show = ref(false);
 const { user, isLoading } = useAuth0();
