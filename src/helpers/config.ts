@@ -12,6 +12,8 @@ const CONFIGS = {
     AUTH0_CLIENT_ID:
       import.meta.env.VITE_CLIENT_ID || "BnGaE7LXaRKG7ZA0hWN5cKZG3F9b3Zlb",
     AUTH0_AUDIENCE: import.meta.env.VITE_AUTH0_AUDIENCE || "https://meoh.api",
+    PINATA_JWT: import.meta.env.VITE_PINATA_JWT,
+    PINATA_GATEWAY: import.meta.env.VITE_PINATA_GATEWAY,
   },
 };
 

@@ -3,7 +3,7 @@
     <div class="relative text-right p-3">
       <button
         type="button"
-        class="font-normal bg-slate-200 rounded-full w-8 m-1 p-1 font-bruno"
+        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
         @click="show(false)"
       >
         X

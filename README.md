@@ -36,3 +36,26 @@ Auth0 helps you to easily:
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+
+# Components and Libraries
+
+## Pinata
+
+- https://docs.pinata.cloud/quickstart ,
+- https://pinata.cloud/blog/how-do-i-upload-files-to-ipfs/
+
+## File Upload
+
+- https://blog.devgenius.io/file-uploads-made-easy-using-the-composition-api-in-vue-97f1b5fa3e7d
+
+## Alert/Notifications
+
+- https://github.com/kyvg/vue3-notification
+
+## Carousel
+
+- https://ismail9k.github.io/vue3-carousel/getting-started.html
+
+## OpenLayers Map
+
+- https://vue3openlayers.netlify.app/get-started.html
