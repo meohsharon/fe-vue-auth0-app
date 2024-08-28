@@ -54,7 +54,11 @@
         <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
           My Current Location
         </ol-control-button>
-        <ol-control-button @click="goToTreeLocation" class="pl-4">
+        <ol-control-button
+          @click="goToTreeLocation"
+          class="pl-4"
+          data-tooltip="Right Click on the Map to Plant Your Tree"
+        >
           My Tree Location
         </ol-control-button>
       </ol-control-bar>
@@ -118,12 +122,11 @@ contextMenuItems.value = [
     classname: "context-style", // add some CSS rules
     callback: (val) => {
       view.value?.setCenter(val.coordinate);
-    }, // `center` is your callback function
+    },
   },
   {
     text: "Plant A Tree",
-    classname: "context-style", // you can add this icon with a CSS class
-    // instead of `icon` property (see next line)
+    classname: "context-style",
     icon: treeMarker, // this can be relative or absolute
     callback: (val) => {
       treeLocation.value = val.coordinate;
@@ -137,11 +140,11 @@ contextMenuItems.value = [
 
 <style scoped>
 .context-style {
-  /* position: relative;
-  display: inline;*/
+  display: block;
+  position: absolute;
   font-size: 32px;
   padding: 50px;
-  background-color: rgb(43, 163, 63);
+  background-color: #16a34a;
   width: 100vw;
 }
 .control-bar-container {
@@ -149,5 +152,16 @@ contextMenuItems.value = [
   transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
+}
+
+[data-tooltip]:hover::after {
+  display: block;
+  position: absolute;
+  top: 98%;
+  width: 20em;
+  content: attr(data-tooltip);
+  border: 1px dashed #16a34a;
+  background: #eee;
+  padding: 1em;
 }
 </style>

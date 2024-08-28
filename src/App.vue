@@ -1,5 +1,5 @@
 <template>
-  <notifications class="min-w-[50%] border-2" />
+  <notifications class="min-w-[50%] border-dashed border-2" />
 
   <div v-if="isLoading" class="flex min-h-screen items-center justify-center">
     <LoadingSpinner />

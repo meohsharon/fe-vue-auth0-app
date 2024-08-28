@@ -4,19 +4,32 @@
       <input type="file" @change="onChange($event)" />
       <button
         @click="onSubmit"
-        class="bg-red-400 hover:bg-gray-800 hover:text-red-600 hover:border-transparent rounded p-4 w-44"
+        class="bg-red-400 hover:bg-gray-800 hover:text-red-600 hover:border-transparent rounded p-2 lg:p-4 w-20 lg:w-44 text-sm lg:text-base"
       >
         Upload
       </button>
     </div>
 
-    <div v-if="cid" class="pt-12">
-      <a
-        class="font-medium text-base md:text-xl text-blue-700"
-        :href="cid"
-        target="_blank"
-        >{{ cid }}</a
-      >
+    <div
+      class="text-left border-dashed border-2 mx-2 sm:mx-8 lg:mx-16 xl:mx-32 px-2 sm:px-8 lg:px-16 xl:px-32"
+    >
+      <div v-if="url" class="pt-12 lg:text-xl sm:text-base">
+        IPFS URL:
+        <a
+          class="font-medium lg:text-base sm:text-base text-blue-700"
+          :href="url"
+          target="_blank"
+        >
+          <pre> {{ url }}</pre>
+        </a>
+      </div>
+
+      <div v-if="url" class="pt-12 lg:text-xl sm:text-base">
+        File Details:
+        <pre class="font-medium lg:text-base sm:text-base text-blue-700"
+          >{{ uploadDetails }} </pre
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -45,11 +58,14 @@ const onChange = ($event: Event) => {
   }
 };
 
-const cid = ref(null);
+const url = ref(null);
+const uploadDetails = ref(null);
 const onSubmit = async () => {
   try {
     const upload = await pinata.upload.file(file.value);
-    cid.value = `https://ipfs.io/ipfs/${upload.IpfsHash}`;
+    url.value = `https://ipfs.io/ipfs/${upload.IpfsHash}`;
+    uploadDetails.value = upload;
+
     notification.notify({
       type: "success",
       title: "IPFS File Upload",
