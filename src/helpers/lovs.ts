@@ -1,3 +1,5 @@
+import { AuthorizationParams } from "@auth0/auth0-vue";
+
 export const navigation = [
   {
     text: "Home",
@@ -13,8 +15,8 @@ export const navigation = [
   },
 ];
 
-export const authorizationParams = {
+export const authorizationParams: AuthorizationParams = {
   prompt: "login",
-  avatar: 6, // default avatar
+  avatar: localStorage.getItem("avatar") ?? "6",
   tree_location: localStorage.getItem("treeLocation"),
 };

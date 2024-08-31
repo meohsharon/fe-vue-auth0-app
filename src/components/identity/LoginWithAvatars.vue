@@ -45,6 +45,8 @@ import { authorizationParams } from "@helpers/lovs";
 
 const { loginWithRedirect } = useAuth0();
 const handleLogin = (avatarIndex: number) => {
+  localStorage.setItem("avatar", avatarIndex.toString());
+
   loginWithRedirect({
     appState: {
       target: "/home",

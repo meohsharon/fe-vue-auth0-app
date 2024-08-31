@@ -4,16 +4,17 @@
       <input type="file" @change="onChange($event)" />
       <button
         @click="onSubmit"
-        class="bg-red-400 hover:bg-gray-800 hover:text-red-600 hover:border-transparent rounded p-2 lg:p-4 w-20 lg:w-44 text-sm lg:text-base"
+        class="bg-red-500 hover:bg-gray-500 hover:text-white hover:border-transparent rounded p-2 lg:p-4 w-20 lg:w-44 text-sm lg:text-base"
       >
         Upload
       </button>
     </div>
 
     <div
+      v-if="url"
       class="text-left border-dashed border-2 mx-2 sm:mx-8 lg:mx-16 xl:mx-32 px-2 sm:px-8 lg:px-16 xl:px-32"
     >
-      <div v-if="url" class="pt-12 lg:text-xl sm:text-base">
+      <div class="pt-12 lg:text-xl sm:text-base">
         IPFS URL:
         <a
           class="font-medium lg:text-base sm:text-base text-blue-700"
@@ -24,7 +25,7 @@
         </a>
       </div>
 
-      <div v-if="url" class="pt-12 lg:text-xl sm:text-base">
+      <div class="pt-12 lg:text-xl sm:text-base">
         File Details:
         <pre class="font-medium lg:text-base sm:text-base text-blue-700"
           >{{ uploadDetails }} </pre
