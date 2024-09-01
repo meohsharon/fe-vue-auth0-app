@@ -1,7 +1,7 @@
 <template>
   <img :src="src" alt="Scene One" />
   <div
-    class="hotspot top-36 left-24 sm:top-32 sm:left-20 md:top-80 md:left-48 lg:top-[45%] lg:left-52 xl:top-90 xl:left-[20%] 2xl:left-[20%]"
+    class="hotspot top-60 left-24 max-[400px]:top-52 max-[400px]:left-20 sm:top-64 sm:left-40 md:top-70 md:left-44 lg:top-[45%] lg:left-56 xl:top-90 xl:left-[20%] 2xl:left-[20%]"
     @click="show = true"
   >
     <span
@@ -26,7 +26,7 @@ defineProps<{
 .hotspot {
   z-index: 2;
   position: absolute;
-  display: block;
+  /* display: inline; */
 
   span {
     position: relative;
