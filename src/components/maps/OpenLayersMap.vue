@@ -57,7 +57,7 @@
         <ol-control-button
           @click="goToTreeLocation"
           class="pl-4"
-          data-tooltip="Right Click on the Map to Plant Your Tree"
+          data-tooltip="Right Click/Long-Press on the Map to Plant Your Tree"
         >
           My Tree Location
         </ol-control-button>
@@ -157,6 +157,7 @@ contextMenuItems.value = [
 [data-tooltip]:hover::after {
   display: block;
   position: absolute;
+  font-size: .5rem;
   top: 98%;
   width: 20em;
   content: attr(data-tooltip);
