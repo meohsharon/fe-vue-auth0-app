@@ -57,7 +57,7 @@
         <ol-control-button
           @click="goToTreeLocation"
           class="pl-4"
-          data-tooltip="Right Click/Long-Press on the Map to Plant Your Tree"
+          data-tooltip="Right-Click or Long-Press on Map to Plant Tree"
         >
           My Tree Location
         </ol-control-button>
