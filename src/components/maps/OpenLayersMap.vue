@@ -48,7 +48,7 @@
     <ol-context-menu-control :items="contextMenuItems" />
 
     <div
-      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full text-xs w-[80%] md:w-auto lg:w-auto p-2 md:p-4 top-24 sm:top-30 md:top-52 lg:top-44 control-bar-container"
+      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full control-bar-container p-2 text-[8px] md:text-xs w-[65%] md:w-1/2 lg:w-1/3 xl:w-1/4 max-[360px]:top-[16.9vh] max-[380px]:top-[17.4vh] max-[500px]:top-[16vh] max-[600px]:top-[17vh] md:top-48 lg:top-60 xl:top-40 2xl:top-52"
     >
       <ol-control-bar>
         <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
