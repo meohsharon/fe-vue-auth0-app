@@ -103,9 +103,10 @@ const goToTreeLocation = () => {
 
 const currentLocation = ref([]);
 const geoLocChange = (event: ObjectEvent) => {
+  console.log('geoLocChange')
   currentLocation.value = event.target.getPosition();
-  view.value?.setCenter(event.target?.getPosition());
-  view.value?.setZoom(12);
+  // view.value?.setCenter(event.target?.getPosition());
+  // view.value?.setZoom(12);
 };
 
 const goToCurrentLocation = () => {

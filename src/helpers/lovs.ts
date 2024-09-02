@@ -1,19 +1,28 @@
 import { AuthorizationParams } from "@auth0/auth0-vue";
 
-export const navigation = [
+export const topNavigation = [
   {
     text: "Home",
+    name: "Home",
     target: "/home",
   },
   {
+    text: "Profile",
+    name: "Profile",
+    target: "/profile"
+  },
+  {
     text: "IPFS",
+    name: "FileManager",
     target: "/file-manager",
   },
   {
     text: "My Tree",
+    name: "MyTree",
     target: "/my-tree",
   },
 ];
+
 
 export const authorizationParams: AuthorizationParams = {
   prompt: "login",

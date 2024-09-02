@@ -1,6 +1,6 @@
 <template>
   <header class="items-center bg-transparent text-gray-900 hidden sm:flex">
-    <div v-for="nav in navigation">
+    <div v-for="nav in topNavigation">
       <button
         class="hover:bg-white hover:text-red-500 hover:border-transparent rounded p-4 m-4"
       >
@@ -11,5 +11,5 @@
 </template>
 
 <script setup lang="ts">
-import { navigation } from "@helpers/lovs";
+import { topNavigation } from "@helpers/lovs";
 </script>
