@@ -103,7 +103,7 @@ const goToTreeLocation = () => {
 
 const currentLocation = ref([]);
 const geoLocChange = (event: ObjectEvent) => {
-  console.log('geoLocChange')
+  console.log("geoLocChange");
   currentLocation.value = event.target.getPosition();
   // view.value?.setCenter(event.target?.getPosition());
   // view.value?.setZoom(12);
@@ -158,7 +158,7 @@ contextMenuItems.value = [
 [data-tooltip]:hover::after {
   display: block;
   position: absolute;
-  font-size: .5rem;
+  font-size: 0.5rem;
   top: 98%;
   width: 20em;
   content: attr(data-tooltip);

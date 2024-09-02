@@ -7,9 +7,9 @@ export const topNavigation = [
     target: "/home",
   },
   {
-    text: "Profile",
-    name: "Profile",
-    target: "/profile"
+    text: "Onboarding",
+    name: "Onboarding",
+    target: "/onboarding",
   },
   {
     text: "IPFS",
@@ -22,7 +22,6 @@ export const topNavigation = [
     target: "/my-tree",
   },
 ];
-
 
 export const authorizationParams: AuthorizationParams = {
   prompt: "login",

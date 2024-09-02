@@ -8,18 +8,18 @@ const Landing = () => import("@views/LandingPage.vue");
 
 const staticRoutes = [
   {
-    path: '/',
-    name: 'LandingPage',
+    path: "/",
+    name: "LandingPage",
     component: Landing,
   },
   {
-    path: '/not-allowed',
-    name: 'NotAllowed',
+    path: "/not-allowed",
+    name: "NotAllowed",
     component: NotAllowed,
   },
   {
-    path: '/:catchAll(.*)',
-    name: 'NotFound',
+    path: "/:catchAll(.*)",
+    name: "NotFound",
     component: NotFoundPage,
   },
 ];

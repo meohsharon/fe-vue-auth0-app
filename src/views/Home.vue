@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading" class="flex-grow text-center">
+  <div class="flex-grow text-center">
     <p class="text-sm sm:text-base">Hello {{ user.name }}</p>
     <Avatar />
   </div>
@@ -10,5 +10,5 @@ import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import Avatar from "@components/Avatar.vue";
 
-const { user, isLoading } = useAuth0();
+const { user } = useAuth0();
 </script>

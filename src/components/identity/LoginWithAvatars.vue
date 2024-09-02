@@ -45,19 +45,24 @@ import { authorizationParams } from "@helpers/lovs";
 
 const { loginWithRedirect } = useAuth0();
 const handleLogin = (avatarIndex: number) => {
-  const existing_avatar = localStorage.getItem('avatar')
+  const existing_avatar = localStorage.getItem("avatar");
   localStorage.setItem("avatar", avatarIndex.toString());
-  const future_avatar = localStorage.getItem('avatar')
-  console.log({ avatarIndex, existing_avatar, future_avatar, toAuth0: authorizationParams.avatar})
+  const future_avatar = localStorage.getItem("avatar");
+  console.log({
+    avatarIndex,
+    existing_avatar,
+    future_avatar,
+    toAuth0: authorizationParams.avatar,
+  });
 
   loginWithRedirect({
     appState: {
       target: "/home",
     },
     authorizationParams: {
-    ...authorizationParams,
-    avatar: avatarIndex
-  }
+      ...authorizationParams,
+      avatar: avatarIndex,
+    },
   });
 };
 
