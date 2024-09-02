@@ -36,7 +36,10 @@ Questions to Answer: {{ steps.questions }}</pre
                   <button
                     class="bg-pink-400 hover:bg-gray-300 text-white hover:text-pink-500 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
                   >
-                    Complete This Step
+                  <div class="flex justify-between">
+                      <span> Completed:</span>
+                      <CheckIcon class="w-4 ml-4"/>
+                    </div>
                   </button>
                 </div>
 
@@ -81,9 +84,9 @@ Features to Unlock:: {{ steps.unlocked_features }}</pre
 
 <script setup lang="ts">
 import { useAuth0 } from "@auth0/auth0-vue";
+import { CheckIcon, LockClosedIcon } from "@heroicons/vue/20/solid";
+
 import { onboardingFlow } from "@helpers/dataModel/index";
-import Avatar from "@components/Avatar.vue";
-import { LockClosedIcon } from "@heroicons/vue/20/solid";
 
 const { user } = useAuth0();
 </script>
