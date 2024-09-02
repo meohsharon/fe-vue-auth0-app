@@ -4,15 +4,15 @@
       Hello {{ user.name }}. Complete the following sections to unlock features
     </p>
 
-    <div id="'onboardingFlow'" class="mt-12 mx-12 text-left">
+    <div id="'onboardingFlow'" class="mt-12 mx-12 text-left text-emerald-500">
       <p>
         Number of Sections to complete: {{ Object.keys(onboardingFlow).length }}
       </p>
 
       <div id="section" v-for="(sections, key) of onboardingFlow" class="my-8">
         <fieldset class="border border-dashed rounded-md border-gray-300 p-3">
-          <legend class="p-2">{{ key }}</legend>
-          <div class="grid gap-x-8 gap-y-6 underline">
+          <legend class="p-2 text-fuchsia-600">{{ key }}</legend>
+          <div class="grid gap-x-8 gap-y-6 underline text-orange-600">
             <p>
               Number of Steps to complete in this section: {{ sections.length }}
             </p>
@@ -22,12 +22,12 @@
             <fieldset
               class="border border-dashed rounded-md border-gray-300 p-3"
             >
-              <legend class="p-2">Step {{ steps.step }}:</legend>
+              <legend class="p-2 text-teal-600">Step {{ steps.step }}:</legend>
 
               <div id="step" class="pl-8">
-                <pre>Questions to Answer: {{ steps.questions }}</pre>
-                <pre>Validations to Pass: {{ steps.validations_required }}</pre>
-                <pre>Features to Unlock:: {{ steps.unlocked_features }}</pre>
+                <pre class="text-pink-600">Questions to Answer: {{ steps.questions }}</pre>
+                <pre class="text-cyan-400">Validations to Pass: {{ steps.validations_required }}</pre>
+                <pre class="text-green-700">Features to Unlock:: {{ steps.unlocked_features }}</pre>
               </div>
             </fieldset>
           </div>
