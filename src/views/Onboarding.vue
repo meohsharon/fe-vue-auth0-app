@@ -22,12 +22,50 @@
             <fieldset
               class="border border-dashed rounded-md border-gray-300 p-3"
             >
-              <legend class="p-2 text-teal-600">Step {{ steps.step }}:</legend>
+              <legend class="p-2 text-teal-600">Step {{ steps.step }}</legend>
 
               <div id="step" class="pl-8">
-                <pre class="text-pink-600">Questions to Answer: {{ steps.questions }}</pre>
-                <pre class="text-cyan-400">Validations to Pass: {{ steps.validations_required }}</pre>
-                <pre class="text-green-700">Features to Unlock:: {{ steps.unlocked_features }}</pre>
+                <div
+                  id="questions"
+                  class="flex justify-between border-b-4 border-dotted mb-8"
+                >
+                  <pre class="text-pink-600">
+Questions to Answer: {{ steps.questions }}</pre
+                  >
+                  <button
+                    class="bg-pink-500 hover:bg-gray-300 text-white hover:text-pink-500 hover:border-transparent rounded text-xs px-4 m-4 h-12"
+                  >
+                    Complete This Step
+                  </button>
+                </div>
+
+                <div
+                  id="validations"
+                  class="flex justify-between border-b-4 border-dotted mb-8"
+                >
+                  <pre class="text-cyan-500">
+Validations to Pass: {{ steps.validations_required }}</pre
+                  >
+                  <button
+                    class="bg-cyan-500 hover:bg-gray-300 text-white hover:text-cyan-500 hover:border-transparent rounded text-xs px-4 m-4 h-12"
+                  >
+                    Complete This Step
+                  </button>
+                </div>
+
+                <div
+                  id="features"
+                  class="flex justify-between border-b-4 border-dotted mb-8"
+                >
+                  <pre class="text-green-500">
+Features to Unlock:: {{ steps.unlocked_features }}</pre
+                  >
+                  <button
+                    class="bg-green-600 hover:bg-gray-300 text-white hover:text-green-600 hover:border-transparent rounded text-xs px-4 m-4 h-12"
+                  >
+                    Complete This Step
+                  </button>
+                </div>
               </div>
             </fieldset>
           </div>
