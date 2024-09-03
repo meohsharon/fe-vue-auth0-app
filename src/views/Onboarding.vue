@@ -10,16 +10,20 @@
         Number of Sections to complete: {{ Object.keys(onboardingFlow).length }}
       </p>
 
-      <div id="section" v-for="(sections, key) of onboardingFlow" class="my-8">
+      <div
+        id="section"
+        v-for="(sections, sectionKey) of onboardingFlow"
+        class="my-8"
+      >
         <fieldset class="border border-dashed rounded-md border-gray-300 p-3">
-          <legend class="p-2 text-fuchsia-600">{{ key }}</legend>
+          <legend class="p-2 text-fuchsia-600">{{ sectionKey }}</legend>
           <div class="grid gap-x-8 gap-y-6 underline underline-offset-8">
             <p>
               Number of Steps to complete in this section: {{ sections.length }}
             </p>
           </div>
 
-          <div v-for="steps of sections" class="pl-8 mt-12">
+          <div v-for="(steps, stepIndex) in sections" class="pl-8 mt-12">
             <fieldset
               class="border border-dashed rounded-md border-gray-300 p-3"
             >
@@ -34,11 +38,12 @@
 Questions to Answer: {{ steps.questions }}</pre
                   >
                   <button
+                    @click="show(sectionKey, steps.step, 'questions')"
                     class="bg-pink-400 hover:bg-gray-300 text-white hover:text-pink-500 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
                   >
-                  <div class="flex justify-between">
+                    <div class="flex justify-between">
                       <span> Completed:</span>
-                      <CheckIcon class="w-4 ml-4"/>
+                      <CheckIcon class="w-4 ml-4" />
                     </div>
                   </button>
                 </div>
@@ -51,6 +56,7 @@ Questions to Answer: {{ steps.questions }}</pre
 Validations to Pass: {{ steps.validations_required }}</pre
                   >
                   <button
+                    @click="show(sectionKey, steps.step, 'validations')"
                     class="bg-cyan-500 hover:bg-gray-300 text-white hover:text-cyan-500 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
                   >
                     Complete This Step
@@ -69,7 +75,7 @@ Features to Unlock:: {{ steps.unlocked_features }}</pre
                   >
                     <div class="flex justify-between">
                       <span> Status:</span>
-                      <LockClosedIcon class="w-4 ml-4"/>
+                      <LockClosedIcon class="w-4 ml-4" />
                     </div>
                   </button>
                 </div>
@@ -80,13 +86,85 @@ Features to Unlock:: {{ steps.unlocked_features }}</pre
       </div>
     </div>
   </div>
+
+  <BaseModal :open="section === 1 && step === 1 && part === 'questions'">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="show('', 0, undefined)"
+      >
+        X
+      </button>
+      <SectionOneStepOneQuestionsForm />
+    </div>
+  </BaseModal>
+
+  <BaseModal :open="section === 1 && step === 1 && part === 'validations'">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="show('', 0, undefined)"
+      >
+        X
+      </button>
+      <SectionOneStepOneValidationsForm />
+    </div>
+  </BaseModal>
+
+  <BaseModal :open="section === 2 && step === 1 && part === 'questions'">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="show('', 0, undefined)"
+      >
+        X
+      </button>
+      <SectionTwoStepOneQuestionsForm />
+    </div>
+  </BaseModal>
+
+  <BaseModal :open="section === 2 && step === 1 && part === 'validations'">
+    <div class="relative text-right p-3">
+      <button
+        type="button"
+        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
+        @click="show('', 0, undefined)"
+      >
+        X
+      </button>
+      <SectionTwoStepOneValidationsForm />
+    </div>
+  </BaseModal>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
 import { CheckIcon, LockClosedIcon } from "@heroicons/vue/20/solid";
 
+import SectionOneStepOneQuestionsForm from "@components/onboarding/sectionOne/StepOneQuestionsForm.vue";
+import SectionOneStepOneValidationsForm from "@components/onboarding/sectionOne/StepOneValidationsForm.vue";
+import SectionTwoStepOneQuestionsForm from "@components/onboarding/sectionTwo/StepOneQuestionsForm.vue";
+import SectionTwoStepOneValidationsForm from "@components/onboarding/sectionTwo/StepOneValidationsForm.vue";
+
+import BaseModal from "@components/base/BaseModal.vue";
 import { onboardingFlow } from "@helpers/dataModel/index";
 
 const { user } = useAuth0();
+
+const section = ref(null);
+const step = ref(null);
+const part = ref(null);
+
+const show = (sectionKey: string, stepIndex: number, stepPart: string) => {
+  const sectionNumber = Number(sectionKey.split(" ")[1]);
+  console.log({ sectionKey, sectionNumber, stepIndex, stepPart });
+
+  section.value = sectionNumber;
+  step.value = stepIndex;
+  part.value = stepPart;
+};
 </script>

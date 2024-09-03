@@ -2,7 +2,7 @@
   <!-- Render inside our `<div id="modals"></div>` in index.html -->
   <Teleport to="#modals">
     <!-- Show / hide the modal -->
-    <div v-if="show">
+    <div v-if="open">
       <!-- The backdrop -->
       <div class="fixed inset-0 bg-gray-900 opacity-40"></div>
 
@@ -18,6 +18,6 @@
 
 <script setup lang="ts">
 defineProps<{
-  show: boolean;
+  open: boolean;
 }>();
 </script>

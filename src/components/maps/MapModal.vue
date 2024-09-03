@@ -1,5 +1,5 @@
 <template>
-  <BaseModal :show="model">
+  <BaseModal :open="model">
     <div class="relative text-right p-3">
       <button
         type="button"
