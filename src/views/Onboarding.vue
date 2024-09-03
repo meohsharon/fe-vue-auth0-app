@@ -87,56 +87,28 @@ Features to Unlock:: {{ steps.unlocked_features }}</pre
     </div>
   </div>
 
-  <BaseModal :open="section === 1 && step === 1 && part === 'questions'">
-    <div class="relative text-right p-3">
+  <BaseModal :open="section !== undefined">
+    <div class="relative text-right p-3" :hidden="section === undefined">
       <button
         type="button"
         class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
-        @click="show('', 0, undefined)"
+        @click="show(undefined, undefined, undefined)"
       >
         X
       </button>
-      <SectionOneStepOneQuestionsForm />
     </div>
-  </BaseModal>
-
-  <BaseModal :open="section === 1 && step === 1 && part === 'validations'">
-    <div class="relative text-right p-3">
-      <button
-        type="button"
-        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
-        @click="show('', 0, undefined)"
-      >
-        X
-      </button>
-      <SectionOneStepOneValidationsForm />
-    </div>
-  </BaseModal>
-
-  <BaseModal :open="section === 2 && step === 1 && part === 'questions'">
-    <div class="relative text-right p-3">
-      <button
-        type="button"
-        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
-        @click="show('', 0, undefined)"
-      >
-        X
-      </button>
-      <SectionTwoStepOneQuestionsForm />
-    </div>
-  </BaseModal>
-
-  <BaseModal :open="section === 2 && step === 1 && part === 'validations'">
-    <div class="relative text-right p-3">
-      <button
-        type="button"
-        class="font-normal bg-gray-200 rounded-full w-8 m-1 p-1 font-bruno"
-        @click="show('', 0, undefined)"
-      >
-        X
-      </button>
-      <SectionTwoStepOneValidationsForm />
-    </div>
+    <SectionOneStepOneQuestionsForm
+      v-if="section === 1 && step === 1 && part === 'questions'"
+    />
+    <SectionOneStepOneValidationsForm
+      v-if="section === 1 && step === 1 && part === 'validations'"
+    />
+    <SectionTwoStepOneQuestionsForm
+      v-if="section === 2 && step === 1 && part === 'questions'"
+    />
+    <SectionTwoStepOneValidationsForm
+      v-if="section === 2 && step === 1 && part === 'validations'"
+    />
   </BaseModal>
 </template>
 
@@ -155,16 +127,22 @@ import { onboardingFlow } from "@helpers/dataModel/index";
 
 const { user } = useAuth0();
 
-const section = ref(null);
-const step = ref(null);
-const part = ref(null);
+const section = ref(undefined);
+const step = ref(undefined);
+const part = ref(undefined);
 
-const show = (sectionKey: string, stepIndex: number, stepPart: string) => {
-  const sectionNumber = Number(sectionKey.split(" ")[1]);
-  console.log({ sectionKey, sectionNumber, stepIndex, stepPart });
-
+const show = (
+  sectionKey: string | undefined,
+  stepIndex: number | undefined,
+  stepPart: string | undefined,
+) => {
+  const sectionNumber = sectionKey
+    ? Number(sectionKey.split(" ")[1])
+    : undefined;
   section.value = sectionNumber;
   step.value = stepIndex;
   part.value = stepPart;
+
+  console.log({ section: section.value, step: step.value, part: part.value });
 };
 </script>
