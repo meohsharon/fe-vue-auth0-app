@@ -7,8 +7,13 @@
     :api-key="GOOGLE_MAPS_API_KEY"
     :center="center"
     :zoom="zoom"
+    @contextmenu="showContextMenu($event)"
   >
-    <CustomMarker :options="markerOptions">
+    <!-- Marker for the Initial Map Center -->
+    <AdvancedMarker :options="initialMarkerOptions" />
+
+    <!-- Marker for the User's Current Location -->
+    <CustomMarker :options="currentMarkertOptions">
       <div class="text-center">
         <img :src="hereIcon" class="w-20" />
       </div>
@@ -30,23 +35,42 @@
         </div>
       </div>
     </CustomControl>
+
+    <!-- Overlay to close the menu -->
+    <div class="overlay" @click="closeContextMenu" v-if="showMenu" />
+    <!-- Custom Context Menu -->
+    <ContextMenu
+      v-if="showMenu"
+      :actions="contextMenuActions"
+      @action-clicked="handleActionClick"
+      :x="menuX"
+      :y="menuY"
+    />
   </GoogleMap>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, reactive, watch } from "vue";
-import { GoogleMap, CustomMarker, CustomControl } from "vue3-google-map";
+import {
+  GoogleMap,
+  AdvancedMarker,
+  CustomMarker,
+  CustomControl,
+} from "vue3-google-map";
+
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
-
+import ContextMenu from "@components/maps/google/ContextMenu.vue";
 import CONFIG from "@helpers/config";
 const { GOOGLE_MAPS_API_KEY } = CONFIG;
 
 const mapRef = ref(null);
 const zoom = ref(8);
 const center = reactive({ lat: 40.689247, lng: -74.044502 });
-const currentLocation = reactive(center);
-const markerOptions = { position: center };
+const initialMarkerOptions = { position: center };
+
+const currentLocation = reactive({ lat: undefined, lng: undefined });
+const currentMarkertOptions = { position: currentLocation };
 
 // when this component runs attempt to get the User's location
 // provide a callback to handle the provided position
@@ -57,6 +81,7 @@ navigator.geolocation.getCurrentPosition((pos) => {
 });
 
 // watch for changes to the User's Location
+// https://www.reddit.com/r/vuejs/comments/tf9h60/trying_to_get_google_maps_current_location_vue3/
 watch(
   [currentLocation, () => mapRef.value?.ready],
   ([loc, isReady]) => {
@@ -100,17 +125,33 @@ const goToCurrentLocation = () => {
     mapRef.value?.map.panTo(currentLocation);
   }
 };
+
+const showMenu = ref(false);
+const menuX = ref(0);
+const menuY = ref(0);
+
+const contextMenuActions = ref([
+  { label: "Edit", action: "edit" },
+  { label: "Delete", action: "delete" },
+]);
+
+const showContextMenu = (event) => {
+  showMenu.value = true;
+  menuX.value = event.pixel.x;
+  menuY.value = event.pixel.y;
+};
+
+const closeContextMenu = () => {
+  showMenu.value = false;
+};
+
+function handleActionClick(action) {
+  console.log(action);
+  // console.log(targetRow.value);
+}
 </script>
 
 <style scoped>
-.context-style {
-  display: block;
-  position: absolute;
-  font-size: 32px;
-  padding: 50px;
-  background-color: #16a34a;
-  width: 100vw;
-}
 .control-bar-container {
   left: 50%;
   transform: translate(-50%, -50%);
@@ -128,5 +169,25 @@ const goToCurrentLocation = () => {
   border: 1px dashed #16a34a;
   background: #eee;
   padding: 1em;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 49;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay:hover {
+  cursor: pointer;
 }
 </style>
