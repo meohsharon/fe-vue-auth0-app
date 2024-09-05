@@ -14,6 +14,7 @@ const CONFIGS = {
     AUTH0_AUDIENCE: import.meta.env.VITE_AUTH0_AUDIENCE || "https://meoh.api",
     PINATA_JWT: import.meta.env.VITE_PINATA_JWT,
     PINATA_GATEWAY: import.meta.env.VITE_PINATA_GATEWAY,
+    GOOGLE_MAPS_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   },
 };
 

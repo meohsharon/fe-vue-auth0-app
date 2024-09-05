@@ -1,5 +1,9 @@
 import "./main.css";
 import "vue3-openlayers/styles.css";
+import "ol/ol.css";
+import "ol-ext/dist/ol-ext.css";
+
+import LayerSwitcher from "ol-ext/control/LayerSwitcher";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";

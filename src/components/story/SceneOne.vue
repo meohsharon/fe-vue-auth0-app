@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import MapModal from "@components/maps/MapModal.vue";
+import MapModal from "@components/maps/openlayers/MapModal.vue";
 const show = ref(false);
 
 defineProps<{
