@@ -59,3 +59,7 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 ## OpenLayers Map
 
 - https://vue3openlayers.netlify.app/get-started.html
+
+## Google Maps
+
+- https://vue3-google-map.com/getting-started/

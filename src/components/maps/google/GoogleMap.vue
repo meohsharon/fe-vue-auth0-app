@@ -1,87 +1,105 @@
 <template>
   <!-- Source: https://vue3-google-map.com/getting-started/ -->
   <GoogleMap
-    :api-key="GOOGLE_MAPS_API_KEY"
     class="h-[75vh] text-center font-bruno border-2"
+    ref="mapRef"
+    map-id="5a8ccdf3b0e247bc"
+    :api-key="GOOGLE_MAPS_API_KEY"
     :center="center"
     :zoom="zoom"
   >
-    <Marker :options="{ position: center }" />
+    <CustomMarker :options="markerOptions">
+      <div class="text-center">
+        <img :src="hereIcon" class="w-20" />
+      </div>
+    </CustomMarker>
+
+    <CustomControl position="TOP_CENTER">
+      <div
+        class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full control-bar-container p-2 text-[8px] md:text-xs w-[65%] md:w-1/2 lg:w-1/3 xl:w-1/4 max-[360px]:top-[9.7vh] max-[380px]:top-[10.7vh] max-[500px]:top-[9.7vh] max-[600px]:top-[17vh] md:top-32 lg:top-44 xl:top-24 2xl:top-40"
+      >
+        <div @click="goToCurrentLocation" class="border-r-2 pr-4">
+          My Current Location
+        </div>
+        <div
+          @click="goToTreeLocation"
+          class="pl-4"
+          data-tooltip="Right-Click or Long-Press on Map to Plant Tree"
+        >
+          My Tree Location
+        </div>
+      </div>
+    </CustomControl>
   </GoogleMap>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { GoogleMap, Marker } from "vue3-google-map";
+import { onMounted, ref, reactive, watch } from "vue";
+import { GoogleMap, CustomMarker, CustomControl } from "vue3-google-map";
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
 
 import CONFIG from "@helpers/config";
-
 const { GOOGLE_MAPS_API_KEY } = CONFIG;
 
-const map = ref(null);
+const mapRef = ref(null);
 const zoom = ref(8);
-const center = ref({ lat: 40.689247, lng: -74.044502 });
-const projection = ref("EPSG:4326");
-const emit = defineEmits(["map-click"]);
+const center = reactive({ lat: 40.689247, lng: -74.044502 });
+const currentLocation = reactive(center);
+const markerOptions = { position: center };
 
-const treeLocation = ref(null);
-const view = ref<null>(null);
+// when this component runs attempt to get the User's location
+// provide a callback to handle the provided position
+navigator.geolocation.getCurrentPosition((pos) => {
+  // update the User's location
+  currentLocation.lat = pos.coords.latitude;
+  currentLocation.lng = pos.coords.longitude;
+});
+
+// watch for changes to the User's Location
+watch(
+  [currentLocation, () => mapRef.value?.ready],
+  ([loc, isReady]) => {
+    if (isReady && loc.lat && loc.lng) {
+      // if the map is ready and the userLocation has been set/changed,
+      // let's use the component's internal method for moving the map
+      mapRef.value?.map.panTo(loc);
+    }
+  },
+  {},
+);
+
+const treeLocation = reactive({
+  lat: 0,
+  lng: 0,
+});
 onMounted(() => {
   const markerPosition = localStorage.getItem("treeLocation");
+  console.log({ markerPosition });
 
   if (markerPosition) {
-    treeLocation.value = JSON.parse(markerPosition);
+    // treeLocation = JSON.parse(markerPosition);
     // view.value?.setCenter(treeLocation.value);
     // view.value?.setZoom(12);
   }
 });
+
 const goToTreeLocation = () => {
-  if (treeLocation.value) {
-    // view.value?.setCenter(treeLocation.value);
-    // view.value?.setZoom(12);
+  if (treeLocation) {
+    mapRef.value?.map.setZoom(12);
+    mapRef.value?.map.panTo(treeLocation);
   } else {
     alert("You havent planted a tree yet");
   }
 };
 
-const currentLocation = ref([]);
-const geoLocChange = (event) => {
-  console.log("geoLocChange");
-  currentLocation.value = event.target.getPosition();
-  // view.value?.setCenter(event.target?.getPosition());
-  // view.value?.setZoom(12);
-};
-
 const goToCurrentLocation = () => {
-  if (currentLocation.value) {
-    // view.value?.setCenter(currentLocation.value);
-    // view.value?.setZoom(12);
+  console.log({ currentLocation });
+  if (currentLocation) {
+    mapRef.value?.map.setZoom(12);
+    mapRef.value?.map.panTo(currentLocation);
   }
 };
-
-const contextMenuItems = ref<any[]>([]);
-contextMenuItems.value = [
-  {
-    text: "Center map here",
-    classname: "context-style", // add some CSS rules
-    callback: (val) => {
-      // view.value?.setCenter(val.coordinate);
-    },
-  },
-  {
-    text: "Plant A Tree",
-    classname: "context-style",
-    icon: treeMarker, // this can be relative or absolute
-    callback: (val) => {
-      treeLocation.value = val.coordinate;
-      localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
-      emit("map-click", treeLocation);
-    },
-  },
-  "-", // this is a separator
-];
 </script>
 
 <style scoped>
