@@ -35,8 +35,8 @@
                   class="flex justify-between border-b border-solid mb-8"
                 >
                   <pre class="text-pink-600">
-Questions to Answer: {{ steps.questions }}</pre
-                  >
+Questions to Answer: {{ steps.questions }}    
+                  </pre>
                   <button
                     @click="show(sectionKey, steps.step, 'questions')"
                     class="bg-pink-400 hover:bg-gray-300 text-white hover:text-pink-500 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
@@ -53,8 +53,8 @@ Questions to Answer: {{ steps.questions }}</pre
                   class="flex justify-between border-b border-solid mb-8"
                 >
                   <pre class="text-cyan-500">
-Validations to Pass: {{ steps.validations_required }}</pre
-                  >
+Validations to Pass: {{ steps.validations_required }}
+                  </pre>
                   <button
                     @click="show(sectionKey, steps.step, 'validations')"
                     class="bg-cyan-500 hover:bg-gray-300 text-white hover:text-cyan-500 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
@@ -68,8 +68,8 @@ Validations to Pass: {{ steps.validations_required }}</pre
                   class="flex justify-between border-b border-solid mb-8"
                 >
                   <pre class="text-orange-500">
-Features to Unlock:: {{ steps.unlocked_features }}</pre
-                  >
+Features to Unlock:: {{ steps.unlocked_features }}
+                  </pre>
                   <button
                     class="bg-orange-400 hover:bg-gray-300 text-white hover:text-orange-600 hover:border-transparent rounded text-xs px-4 m-4 h-12 w-44"
                   >
