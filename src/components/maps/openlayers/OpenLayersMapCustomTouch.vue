@@ -3,6 +3,7 @@
   <ol-map
     ref="mapRef"
     :controls="[]"
+    @click.stop="handleMapClick"
     class="h-[75vh] text-center font-bruno border-2"
   >
     <ol-view
@@ -67,11 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { ObjectEvent } from "ol/Object";
 import { View, Map } from "ol";
 import { Item } from "ol-contextmenu";
-import LongTouch from "ol-ext/interaction/LongTouch";
+// import LongTouch from "ol-ext/interaction/LongTouch";
 
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
@@ -84,13 +85,81 @@ const emit = defineEmits(["map-click"]);
 
 const treeLocation = ref(null);
 const view = ref<View | null>(null);
+
+let longPressTimer;
+const LONG_PRESS_DURATION = 500; // milliseconds
+
+const handleMapClick = (event: any) => {
+  // Handle normal click events here
+  console.log("Map clicked", event);
+};
+
+const handleMouseUp = () => {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer);
+    longPressTimer = null;
+  }
+};
+
+const handleTouchEnd = () => {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer);
+    longPressTimer = null;
+  }
+};
+
+// Custom long press handler
+const handleTouchStart = (event: TouchEvent) => {
+  if (event.touches.length > 1) return; // Ignore multi-touch
+  longPressTimer = setTimeout(() => {
+    const touch = event.touches[0];
+    handleLongPress({ clientX: touch.clientX, clientY: touch.clientY });
+  }, LONG_PRESS_DURATION);
+};
+
+const handleMouseDown = (event: MouseEvent) => {
+  if (event.button !== 2) return; // Only handle right-click
+  longPressTimer = setTimeout(() => {
+    handleLongPress(event);
+  }, LONG_PRESS_DURATION);
+};
+
+const handleLongPress = (event: any) => {
+  const map = mapRef.value?.map;
+  if (!map) return;
+
+  const pixel = map.getEventPixel(event);
+  const coordinate = map.getCoordinateFromPixel(pixel);
+
+  // Show context menu or perform long press action
+  showContextMenu(coordinate);
+};
+
+const showContextMenu = (coordinate: number[]) => {
+  // Implement your context menu logic here
+  console.log("Show context menu at", coordinate);
+
+  // Example: Plant a tree at the long-pressed location
+  treeLocation.value = coordinate;
+  localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
+  emit("map-click", treeLocation);
+};
+
 onMounted(() => {
   // get map reference
   const map = mapRef.value?.map;
   if (!map) return;
 
-  const longTouch = new LongTouch();
-  map.addInteraction(longTouch);
+  map
+    .getViewport()
+    .addEventListener("touchstart", handleTouchStart, { passive: false });
+  map.getViewport().addEventListener("touchend", handleTouchEnd);
+  map.getViewport().addEventListener("touchcancel", handleTouchEnd);
+  map.getViewport().addEventListener("mousedown", handleMouseDown);
+  map.getViewport().addEventListener("mouseup", handleMouseUp);
+
+  // const longTouch = new LongTouch();
+  // map.addInteraction(longTouch);
 
   // get location
   const markerPosition = localStorage.getItem("treeLocation");
@@ -100,6 +169,18 @@ onMounted(() => {
     view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
   }
+});
+
+onUnmounted(() => {
+  const map = mapRef.value?.map;
+  if (!map) return;
+
+  // Remove event listeners
+  map.getViewport().removeEventListener("touchstart", handleTouchStart);
+  map.getViewport().removeEventListener("touchend", handleTouchEnd);
+  map.getViewport().removeEventListener("touchcancel", handleTouchEnd);
+  map.getViewport().removeEventListener("mousedown", handleMouseDown);
+  map.getViewport().removeEventListener("mouseup", handleMouseUp);
 });
 
 const goToTreeLocation = () => {
