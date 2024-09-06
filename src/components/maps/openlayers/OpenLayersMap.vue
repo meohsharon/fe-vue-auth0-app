@@ -3,7 +3,7 @@
   <ol-map
     ref="mapRef"
     :controls="[]"
-    @click="handleMapClick"
+    @click.stop="handleMapClick"
     class="h-[75vh] text-center font-bruno border-2"
   >
     <ol-view
@@ -48,10 +48,10 @@
 
     <ol-context-menu-control :items="contextMenuItems" />
 
-    <div
-      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full control-bar-container p-2 text-[8px] md:text-xs w-[65%] md:w-1/2 lg:w-1/3 xl:w-1/4 max-[360px]:top-[9.7vh] max-[380px]:top-[10.7vh] max-[500px]:top-[9.7vh] max-[600px]:top-[17vh] md:top-32 lg:top-44 xl:top-24 2xl:top-40"
-    >
-      <ol-control-bar>
+    <ol-control-bar>
+      <div
+        class="control-bar-container absolute flex justify-center z-10 cursor-pointer bg-green-600 rounded-full p-2 text-[8px] md:text-xs w-5/6 md:w-2/3 lg:w-3/5 xl:w-3/5"
+      >
         <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
           My Current Location
         </ol-control-button>
@@ -62,8 +62,8 @@
         >
           My Tree Location
         </ol-control-button>
-      </ol-control-bar>
-    </div>
+      </div>
+    </ol-control-bar>
   </ol-map>
 </template>
 
@@ -72,7 +72,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { ObjectEvent } from "ol/Object";
 import { View, Map } from "ol";
 import { Item } from "ol-contextmenu";
-import LongTouch from "ol-ext/interaction/LongTouch";
+// import LongTouch from "ol-ext/interaction/LongTouch";
 
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
@@ -94,6 +94,36 @@ const handleMapClick = (event: any) => {
   console.log("Map clicked", event);
 };
 
+const handleMouseUp = () => {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer);
+    longPressTimer = null;
+  }
+};
+
+const handleTouchEnd = () => {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer);
+    longPressTimer = null;
+  }
+};
+
+// Custom long press handler
+const handleTouchStart = (event: TouchEvent) => {
+  if (event.touches.length > 1) return; // Ignore multi-touch
+  longPressTimer = setTimeout(() => {
+    const touch = event.touches[0];
+    handleLongPress({ clientX: touch.clientX, clientY: touch.clientY });
+  }, LONG_PRESS_DURATION);
+};
+
+const handleMouseDown = (event: MouseEvent) => {
+  if (event.button !== 2) return; // Only handle right-click
+  longPressTimer = setTimeout(() => {
+    handleLongPress(event);
+  }, LONG_PRESS_DURATION);
+};
+
 const handleLongPress = (event: any) => {
   const map = mapRef.value?.map;
   if (!map) return;
@@ -113,36 +143,6 @@ const showContextMenu = (coordinate: number[]) => {
   treeLocation.value = coordinate;
   localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
   emit("map-click", treeLocation);
-};
-
-// Custom long press handler
-const handleTouchStart = (event: TouchEvent) => {
-  if (event.touches.length > 1) return; // Ignore multi-touch
-  longPressTimer = setTimeout(() => {
-    const touch = event.touches[0];
-    handleLongPress({ clientX: touch.clientX, clientY: touch.clientY });
-  }, LONG_PRESS_DURATION);
-};
-
-const handleTouchEnd = () => {
-  if (longPressTimer) {
-    clearTimeout(longPressTimer);
-    longPressTimer = null;
-  }
-};
-
-const handleMouseDown = (event: MouseEvent) => {
-  if (event.button !== 2) return; // Only handle right-click
-  longPressTimer = setTimeout(() => {
-    handleLongPress(event);
-  }, LONG_PRESS_DURATION);
-};
-
-const handleMouseUp = () => {
-  if (longPressTimer) {
-    clearTimeout(longPressTimer);
-    longPressTimer = null;
-  }
 };
 
 onMounted(() => {
@@ -231,27 +231,18 @@ contextMenuItems.value = [
 </script>
 
 <style scoped>
-.context-style {
-  display: block;
-  position: absolute;
-  font-size: 32px;
-  padding: 50px;
-  background-color: #16a34a;
-  width: 100vw;
-}
 .control-bar-container {
   left: 50%;
-  transform: translate(-50%, -50%);
-  justify-content: center;
-  align-items: center;
+  transform: translate(-50%, 10%);
 }
 
 [data-tooltip]:hover::after {
   display: block;
   position: absolute;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   top: 98%;
-  width: 20em;
+  width: 12rem;
+  left: 12rem;
   content: attr(data-tooltip);
   border: 1px dashed #16a34a;
   background: #eee;

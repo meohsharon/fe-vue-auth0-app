@@ -8,7 +8,7 @@
 
       <!-- Where the actual content goes -->
       <div class="fixed inset-0 flex items-center justify-center">
-        <div class="bg-white text-black w-3/4">
+        <div class="bg-white text-black w-full md:w-5/6 lg:w-4/5 xl:w-2/3 mx-3">
           <slot> </slot>
         </div>
       </div>
