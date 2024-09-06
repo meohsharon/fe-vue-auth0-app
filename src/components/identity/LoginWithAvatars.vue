@@ -1,9 +1,9 @@
 <template>
   <div class="snap-x flex justify-center gap-2">
     <div v-for="index in avatarIndices">
-      <div class="p-4 m-1">
+      <div class="p-1 m-1">
         <img
-          class="inline-block w-32"
+          class="inline-block w-60"
           :src="imgSrc(index)"
           :alt="`${index}.png`"
           @click="handleLogin(index)"
@@ -14,9 +14,9 @@
 
   <div class="snap-x flex justify-center gap-2">
     <div v-for="index in avatarIndices">
-      <div class="p-4 m-1">
+      <div class="p-1 m-1">
         <img
-          class="inline-block w-32"
+          class="inline-block w-60"
           :src="imgSrc(index + 3)"
           :alt="`${index + 3}.png`"
           @click="handleLogin(index + 3)"
@@ -27,9 +27,9 @@
 
   <div class="snap-x flex justify-center gap-2">
     <div v-for="index in avatarIndices">
-      <div class="p-4 m-1">
+      <div class="p-1 m-1">
         <img
-          class="inline-block w-32"
+          class="inline-block w-60"
           :src="imgSrc(index + 6)"
           :alt="`${index + 6}.png`"
           @click="handleLogin(index + 6)"

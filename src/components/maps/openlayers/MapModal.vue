@@ -16,8 +16,8 @@
 
 <script setup lang="ts">
 import BaseModal from "@components/base/BaseModal.vue";
-// import OpenLayersMap from "@components/maps/openlayers/OpenLayersMap.vue";
 import OpenLayersMap from "@components/maps/openlayers/OLMapCustomInteractions.vue";
+// import OpenLayersMap from "@components/maps/openlayers/OpenLayersMap.vue";
 
 const model = defineModel<boolean, string>();
 const show = (value: boolean) => {

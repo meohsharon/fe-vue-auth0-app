@@ -72,7 +72,6 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { ObjectEvent } from "ol/Object";
 import { View, Map } from "ol";
 import { Item } from "ol-contextmenu";
-// import LongTouch from "ol-ext/interaction/LongTouch";
 
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
@@ -157,9 +156,6 @@ onMounted(() => {
   map.getViewport().addEventListener("touchcancel", handleTouchEnd);
   map.getViewport().addEventListener("mousedown", handleMouseDown);
   map.getViewport().addEventListener("mouseup", handleMouseUp);
-
-  // const longTouch = new LongTouch();
-  // map.addInteraction(longTouch);
 
   // get location
   const markerPosition = localStorage.getItem("treeLocation");
