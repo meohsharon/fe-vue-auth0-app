@@ -1,7 +1,7 @@
 <template>
   <!-- Source: https://vue3openlayers.netlify.app/ -->
   <ol-map
-    ref="map"
+    ref="mapRef"
     :controls="[]"
     class="h-[75vh] text-center font-bruno border-2"
   >
@@ -48,9 +48,7 @@
     <ol-context-menu-control :items="contextMenuItems" />
 
     <div
-      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full control-bar-container p-2 text-[8px] md:text-xs w-[65%] 
-      md:w-1/2 lg:w-1/3 xl:w-1/4 
-      max-[360px]:top-[9.7vh] max-[380px]:top-[10.7vh] max-[500px]:top-[9.7vh] max-[600px]:top-[17vh] md:top-32 lg:top-44 xl:top-24 2xl:top-40"
+      class="fixed flex z-10 cursor-pointer bg-green-600 rounded-full control-bar-container p-2 text-[8px] md:text-xs w-[65%] md:w-1/2 lg:w-1/3 xl:w-1/4 max-[360px]:top-[9.7vh] max-[380px]:top-[10.7vh] max-[500px]:top-[9.7vh] max-[600px]:top-[17vh] md:top-32 lg:top-44 xl:top-24 2xl:top-40"
     >
       <ol-control-bar>
         <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
@@ -71,13 +69,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { ObjectEvent } from "ol/Object";
-import { View } from "ol";
+import { View, Map } from "ol";
 import { Item } from "ol-contextmenu";
+import LongTouch from "ol-ext/interaction/LongTouch";
 
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
 
-const map = ref(null);
+const mapRef = ref<{ map: Map }>(null);
 const zoom = ref(8);
 const center = ref([40, 40]);
 const projection = ref("EPSG:4326");
@@ -86,6 +85,12 @@ const emit = defineEmits(["map-click"]);
 const treeLocation = ref(null);
 const view = ref<View | null>(null);
 onMounted(() => {
+  // get map reference
+  const longTouch = new LongTouch();
+  const map = mapRef.value?.map;
+  map.addInteraction(longTouch);
+
+  // get location
   const markerPosition = localStorage.getItem("treeLocation");
 
   if (markerPosition) {
