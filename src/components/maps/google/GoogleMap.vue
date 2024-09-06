@@ -139,7 +139,7 @@ const showContextMenu = (event) => {
   showMenu.value = true;
   menuX.value = event.pixel.x;
   menuY.value = event.pixel.y;
-  event.stop();
+  // event.stop();
   // mapRef.value?.map.stop()
 };
 
