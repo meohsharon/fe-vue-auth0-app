@@ -2,9 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, max-width=600, initial-scale=1, maximum-scale=1, user-scalable=0"/>   -->
+    <!-- https://stackoverflow.com/questions/14360581/force-landscape-orientation-mode -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <meta name="viewport" content="width=1300, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=767, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>  
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 
     <title>MeOH</title>
@@ -33,6 +37,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body class="bg-white w-screen h-screen">
     <div id="app" class="relative z-10"></div>
     <div id="modals" class="relative z-20"></div>
