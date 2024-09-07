@@ -6,7 +6,7 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <Story v-if="!isAuthenticated" class="min-w-full" />
+  <Story v-if="!isAuthenticated" class="flex justify-center justify-items-center w-1/2" />
   <!-- xl:w-[65%] -->
 </template>
 
