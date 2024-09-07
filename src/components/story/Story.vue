@@ -10,7 +10,7 @@
       </div>
 
       <div v-else id="otherScenes">
-        <img :src="imgSrc(slide + 1)" :alt="`scene${index + 1}`" />
+        <img :src="imgSrc(index + 1)" :alt="`scene${index + 1}`" />
       </div>
     </Slide>
 
@@ -32,13 +32,10 @@ const router = useRouter();
 const totalSlides = 4;
 let showNavigation = ref(true);
 
-
-const isMobile = () => {
-  return window.innerWidth <= 768;
-};
+const isMobile = ref(window.innerWidth <= 768);
 
 const imgSrc = (index: number) => {
-  if (isMobile()) {
+  if (isMobile.value) {
     const mobileSrc = new URL(`/src/assets/game/mobile/scene${index}.png`, import.meta.url).href;
     console.log("Mobile image source:", mobileSrc);
     return mobileSrc;
@@ -55,8 +52,8 @@ const handleSlideEnd = (data) => {
   }
 };
 
+// Detect mobile/desktop on window resize
 window.addEventListener('resize', () => {
-  // Trigger Vue reactivity on window resize to check for mobile screen size
-  isMobile();
+  isMobile.value = window.innerWidth <= 768;
 });
 </script>
