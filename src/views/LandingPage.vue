@@ -9,7 +9,6 @@
   <div class="flex flex-col items-center">
     <Story v-if="!isAuthenticated" class="md:w-3/4" />
   </div>
-  <!-- xl:w-[65%] -->
 </template>
 
 <script setup lang="ts">

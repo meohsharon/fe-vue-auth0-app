@@ -23,12 +23,10 @@
 <script setup lang="ts">
 import "vue3-carousel/dist/carousel.css";
 import { defineComponent, ref } from "vue";
-import { useRouter } from "vue-router";
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 import SceneOne from "./SceneOne.vue";
 import AvatarPicker from "@components/identity/AvatarPicker.vue";
 
-const router = useRouter();
 const totalSlides = 4;
 let showNavigation = ref(true);
 
@@ -37,8 +35,6 @@ const isMobile = () => {
 };
 
 const imgSrc = (index: number) => {
-  // return new URL(`/src/assets/game/mobile/scene${index}.png`, import.meta.url).href;
-
   if (isMobile()) {
     const mobileSrc = new URL(
       `/src/assets/game/mobile/scene${index}.png`,
