@@ -39,11 +39,11 @@ const isMobile = () => {
 
 const imgSrc = (index: number) => {
   if (isMobile()) {
-    const mobileSrc = new URL(`/src/assets/game/mobile-friendly-designs(${index}).png`, import.meta.url).href;
+    const mobileSrc = new URL(`/src/assets/game/mobile/scene${index}.png`, import.meta.url).href;
     console.log("Mobile image source:", mobileSrc);
     return mobileSrc;
   } else {
-    const desktopSrc = new URL(`/src/assets/game/scene${index}.png`, import.meta.url).href;
+    const desktopSrc = new URL(`/src/assets/game/desktop/scene${index}.png`, import.meta.url).href;
     console.log("Desktop image source:", desktopSrc); 
     return desktopSrc;
   }
