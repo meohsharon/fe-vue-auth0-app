@@ -1,17 +1,11 @@
 <template>
-  <div class="h-[83vh]">
-      <Story v-if="!isAuthenticated" class="flex h-full portrait:h-full portrait:md:h-screen portrait:md:-translate-y-[5.7vh]
-      portrait:lg:-translate-y-28"/>
+  <div class="h-[83vh] flex justify-center xl:relative xl:h-full ">
+      <Story v-if="!isAuthenticated" class="flex 
+      h-full portrait:h-full portrait:md:h-screen 
+      portrait:md:-translate-y-[5.7vh] portrait:lg:-translate-y-28 max-[600px]:portrait:-translate-y-10
+      xl:w-3/4 2xl:w-2/3
+      "/>
   </div>
-
-  <!-- max-[360px]:portrait:-translate-y-11 
-  max-[380px]:portrait:-translate-y-11
-  max-[500px]:portrait:-translate-y-10
-  max-[600px]:portrait:-translate-y-11 -->
-  <!-- portrait:md:h-screen -->
-    <!-- class="max-w-max " /> -->
-    <!-- min-w-fit lg:min-w-0 lg:max-w-5xl lg:mx-auto -->
-
 </template>
 
 <script setup lang="ts">
