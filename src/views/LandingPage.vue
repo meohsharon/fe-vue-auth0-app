@@ -6,7 +6,8 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <Story v-if="!isAuthenticated" class="mx-auto sm:w-full md:w-full lg:w-full xl:w-[65%]" />
+  <Story v-if="!isAuthenticated" class="mx-auto sm:w-full md:w-full lg:w-full" />
+  <!-- xl:w-[65%] -->
 </template>
 
 <script setup lang="ts">

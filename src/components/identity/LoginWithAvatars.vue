@@ -3,7 +3,7 @@
     <div v-for="index in avatarIndices">
       <div class="p-1 m-1">
         <img
-          class="inline-block w-60"
+          class="inline-block w-80"
           :src="imgSrc(index)"
           :alt="`${index}.png`"
           @click="handleLogin(index)"
@@ -16,7 +16,7 @@
     <div v-for="index in avatarIndices">
       <div class="p-1 m-1">
         <img
-          class="inline-block w-60"
+          class="inline-block w-80"
           :src="imgSrc(index + 3)"
           :alt="`${index + 3}.png`"
           @click="handleLogin(index + 3)"
@@ -29,7 +29,7 @@
     <div v-for="index in avatarIndices">
       <div class="p-1 m-1">
         <img
-          class="inline-block w-60"
+          class="inline-block w-80"
           :src="imgSrc(index + 6)"
           :alt="`${index + 6}.png`"
           @click="handleLogin(index + 6)"
