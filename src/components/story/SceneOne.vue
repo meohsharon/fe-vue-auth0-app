@@ -1,18 +1,7 @@
 <template>
   <img :src="src" alt="Scene One" />
   <!-- portrait:md:xxx works for ipad mini -->
-  <div class="hotspot 
-  top-[40vh] left-64 
-  max-[360px]:top-[40vh] 
-  max-[380px]:top-[47vh] 
-  max-[500px]:top-[39vh] max-[500px]:left-[20vw] 
-  max-[600px]:top-[55vh] 
-  portrait:md:top-[65vh]
-  max-[900px]:top-[25vh] max-[900px]:left-32 
-  md:top-[25vh] md:left-44 
-  lg:top-[45%] lg:left-56 
-  xl:top-90 xl:left-[20%] 
-  2xl:left-[20%]" 
+  <div class="hotspot" 
   @click="show = true">
     <span
       class="w-12 h-12 md:w-20 md:h-20 xl:w-20 xl:h-20 lg:w-20 lg:h-20"
@@ -36,7 +25,9 @@ defineProps<{
 .hotspot {
   z-index: 2;
   position: absolute;
-  /* display: inline; */
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   span {
     position: relative;
@@ -155,6 +146,38 @@ defineProps<{
   100% {
     opacity: 0;
     transform: scale(2);
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 767px) {
+  .hotspot {
+    top: 50vh;
+    left: 25%;
+  }
+}
+
+/* iPads and Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hotspot {
+    top: 67vh;
+    left: 25%;
+  }
+}
+
+/* iPads in landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .hotspot {
+    top: 45vh;
+    left: 50%;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1025px) {
+  .hotspot {
+    top: 45%;
+    left: 20%;
   }
 }
 </style>
