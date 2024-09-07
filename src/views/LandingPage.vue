@@ -6,7 +6,9 @@
     alt="Hidden Image for Auth0 Login"
   />
 
-  <Story v-if="!isAuthenticated" class="flex justify-center justify-items-center w-1/2" />
+  <div class="flex flex-col items-center">
+    <Story v-if="!isAuthenticated" class="md:w-3/4" />
+  </div>
   <!-- xl:w-[65%] -->
 </template>
 
@@ -18,6 +20,6 @@ import Story from "@components/story/Story.vue";
 const { isAuthenticated } = useAuth0();
 if (isAuthenticated.value === true) {
   const router = useRouter();
-  router.replace({ path: "/home" })
+  router.replace({ path: "/home" });
 }
 </script>

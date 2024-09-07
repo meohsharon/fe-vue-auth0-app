@@ -1,10 +1,8 @@
 <template>
   <img :src="src" alt="Scene One" />
   <!-- max-[400px]:top-52 max-[400px]:left-20 sm:top-64 sm:left-40 md:top-70 md:left-44 lg:top-[45%] lg:left-56 xl:top-90 xl:left-[20%] 2xl:left-[20%] -->
-  <div
-    class="hotspot top-96 left-64"
-    @click="show = true"
-  >
+  <!-- <div class="hotspot top-96 left-64" @click="show = true"> -->
+  <div class="hotspot top-[48vh] md:top-96 left-52" @click="show = true">
     <span
       class="w-12 h-12 md:w-20 md:h-20 xl:w-20 xl:h-20 lg:w-20 lg:h-20"
     ></span>
