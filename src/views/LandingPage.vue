@@ -1,14 +1,17 @@
 <template>
-  <!-- Do not remove this -->
-  <img
-    v-if="false"
-    src="@assets/img/auth0-logo.png"
-    alt="Hidden Image for Auth0 Login"
-  />
-
-  <div class="flex flex-col items-center">
-    <Story v-if="!isAuthenticated" class="md:w-3/4" />
+  <div class="h-[83vh]">
+      <Story v-if="!isAuthenticated" class="flex h-full portrait:h-full portrait:md:h-screen portrait:md:-translate-y-[5.7vh]
+      portrait:lg:-translate-y-28"/>
   </div>
+
+  <!-- max-[360px]:portrait:-translate-y-11 
+  max-[380px]:portrait:-translate-y-11
+  max-[500px]:portrait:-translate-y-10
+  max-[600px]:portrait:-translate-y-11 -->
+  <!-- portrait:md:h-screen -->
+    <!-- class="max-w-max " /> -->
+    <!-- min-w-fit lg:min-w-0 lg:max-w-5xl lg:mx-auto -->
+
 </template>
 
 <script setup lang="ts">
