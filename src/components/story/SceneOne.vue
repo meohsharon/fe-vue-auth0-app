@@ -150,10 +150,11 @@ defineProps<{
 /* Source for iPhone SE https://blisk.io/devices/details/iphone-se-2020 */
 
 /* Samsung Galaxy S8+ NOT WORKING */
-@media (max-width: 361px) and (max-height: 750px) {
+@media (min-width: 360px) and (max-height: 750px) {
   .hotspot {
-    top: 50vh;
+    top: 40vh;
     left: 20%;
+    transform: translateY(-3rem);
   }
 }
 
