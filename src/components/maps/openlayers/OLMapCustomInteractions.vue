@@ -165,6 +165,7 @@ onMounted(() => {
   map.getViewport().addEventListener("mouseup", handleMouseUp);
 
   // get location
+  console.log(user.value)
   const fromAuth0 = user?.value?.tree_location;
   const fromStorage = localStorage.getItem("treeLocation");
   console.log({ fromAuth0, fromStorage });
