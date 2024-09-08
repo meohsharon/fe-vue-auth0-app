@@ -1,11 +1,6 @@
 <template>
-  <!-- <div class="h-[83vh] flex justify-center xl:relative xl:h-full"> -->
-  <div class="portrait:fixed flex h-full top-0 bg-red-100 overflow-auto">
-    <!-- class="flex h-full w-full xl:w-3/4 2xl:w-2/3" -->
-    <Story
-      v-if="!isAuthenticated"
-      class="flex flex-grow h-full w-full xl:w-3/4 2xl:w-2/3"
-    />
+  <div class="hotspot">
+    <Story v-if="!isAuthenticated" />
   </div>
 </template>
 
@@ -20,3 +15,27 @@ if (isAuthenticated.value === true) {
   router.replace({ path: "/home" });
 }
 </script>
+
+<style scoped>
+.hotspot {
+  z-index: 2;
+  position: flex;
+}
+
+/* iPhone SE */
+@media (max-width: 375px) {
+  .hotspot {
+    position: fixed;
+    top: 0;
+  }
+}
+
+/* iPads and Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hotspot {
+    position: fixed;
+    top: 0;
+    transform: translateY(-15%);
+  }
+}
+</style>
