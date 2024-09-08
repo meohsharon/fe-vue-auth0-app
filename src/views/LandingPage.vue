@@ -1,5 +1,5 @@
 <template>
-  <div class="hotspot">
+  <div class="story">
     <Story v-if="!isAuthenticated" />
   </div>
 </template>
@@ -17,14 +17,14 @@ if (isAuthenticated.value === true) {
 </script>
 
 <style scoped>
-.hotspot {
+.story {
   z-index: 2;
   position: flex;
 }
 
 /* iPhone SE */
 @media (max-width: 375px) {
-  .hotspot {
+  .story {
     position: fixed;
     top: 0;
   }
@@ -32,7 +32,7 @@ if (isAuthenticated.value === true) {
 
 /* iPads and Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .hotspot {
+  .story {
     position: fixed;
     top: 0;
     transform: translateY(-15%);
