@@ -165,7 +165,6 @@ onMounted(() => {
   map.getViewport().addEventListener("mouseup", handleMouseUp);
 
   // get location
-  console.log(user.value)
   const fromAuth0 = user?.value?.tree_location;
   const fromStorage = localStorage.getItem("treeLocation");
   console.log({ fromAuth0, fromStorage });
@@ -175,6 +174,8 @@ onMounted(() => {
 
   if (markerPosition) {
     treeLocation.value = JSON.parse(markerPosition);
+    localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
+
     view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
   }
