@@ -22,6 +22,14 @@ if (isAuthenticated.value === true) {
   position: flex;
 }
 
+@media (min-width: 360px) and (max-height: 750px) {
+  .story {
+    position: fixed;
+    top: 0;
+    transform: translateY(5%);
+  }
+}
+
 /* iPhone SE */
 @media (max-width: 375px) {
   .story {
