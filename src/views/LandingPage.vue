@@ -14,6 +14,9 @@ if (isAuthenticated.value === true) {
   const router = useRouter();
   router.replace({ path: "/home" });
 }
+
+const fromStorage = localStorage.getItem("treeLocation");
+console.log({ fromStorage });
 </script>
 
 <style scoped>

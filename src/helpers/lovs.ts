@@ -26,5 +26,5 @@ export const topNavigation = [
 export const authorizationParams: AuthorizationParams = {
   prompt: "login",
   avatar: localStorage.getItem("avatar") ?? "6",
-  tree_location: localStorage.getItem("treeLocation"),
+  tree_location: undefined,
 };

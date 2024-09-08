@@ -144,9 +144,9 @@ const showContextMenu = (coordinate: number[]) => {
   console.log("Show context menu at", coordinate);
 
   // Example: Plant a tree at the long-pressed location
-  if (isAuthenticated.value === true) {
+  if (isAuthenticated.value === false) {
     treeLocation.value = coordinate;
-    localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
+    // localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
     emit("map-click", treeLocation);
   }
 };
@@ -167,15 +167,19 @@ onMounted(() => {
   // get location
   const fromAuth0 = user?.value?.tree_location;
   const fromStorage = localStorage.getItem("treeLocation");
-  console.log({ fromAuth0, fromStorage });
   const markerPosition =
-    isAuthenticated.value === false ? fromStorage : fromAuth0;
-  console.log({ markerPosition });
+    isAuthenticated.value === true ? fromAuth0 : fromStorage;
+
+  console.log({
+    isAuthed: isAuthenticated.value,
+    fromAuth0,
+    fromStorage,
+    markerPosition,
+  });
 
   if (markerPosition) {
     treeLocation.value = JSON.parse(markerPosition);
     localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
-
     view.value?.setCenter(treeLocation.value);
     view.value?.setZoom(12);
   }
@@ -243,8 +247,6 @@ const conditionalMenuItem = [
           JSON.stringify(treeLocation.value),
         );
 
-        const fromStorage = localStorage.getItem("treeLocation");
-        console.log({ fromStorage });
         emit("map-click", treeLocation);
       }
     },
