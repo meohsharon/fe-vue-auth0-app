@@ -6,7 +6,7 @@
           class="inline-block w-80 lg:w-60"
           :src="imgSrc(index)"
           :alt="`${index}.png`"
-          @click="handleLogin(index)"
+          @click="callLogin(index)"
         />
       </div>
     </div>
@@ -19,7 +19,7 @@
           class="inline-block w-80 lg:w-60"
           :src="imgSrc(index + 3)"
           :alt="`${index + 3}.png`"
-          @click="handleLogin(index + 3)"
+          @click="callLogin(index + 3)"
         />
       </div>
     </div>
@@ -32,7 +32,7 @@
           class="inline-block w-80 lg:w-60"
           :src="imgSrc(index + 6)"
           :alt="`${index + 6}.png`"
-          @click="handleLogin(index + 6)"
+          @click="callLogin(index + 6)"
         />
       </div>
     </div>
@@ -40,25 +40,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth0 } from "@auth0/auth0-vue";
-import { authorizationParams } from "@helpers/lovs";
+import auth0 from "../../auth0";
+import { handleLogin } from "@helpers/handleLogin";
 
-const { loginWithRedirect } = useAuth0();
-const handleLogin = (avatarIndex: number) => {
-  localStorage.setItem("avatar", avatarIndex.toString());
-  const tree_location = localStorage.getItem("treeLocation");
-  console.log({ ...authorizationParams, avatar: avatarIndex, tree_location });
-
-  loginWithRedirect({
-    appState: {
-      target: "/home",
-    },
-    authorizationParams: {
-      ...authorizationParams,
-      avatar: avatarIndex,
-      tree_location,
-    },
-  });
+const callLogin = (avatarIndex: number) => {
+  handleLogin(avatarIndex, auth0);
 };
 
 const avatarIndices = [1, 2, 3];

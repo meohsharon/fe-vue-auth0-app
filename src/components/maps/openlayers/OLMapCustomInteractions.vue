@@ -241,6 +241,8 @@ const conditionalMenuItem = [
           JSON.stringify(treeLocation.value),
         );
 
+        const fromStorage = localStorage.getItem("treeLocation");
+        console.log({ fromStorage });
         emit("map-click", treeLocation);
       }
     },
