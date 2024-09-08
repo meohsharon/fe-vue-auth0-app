@@ -154,14 +154,14 @@ defineProps<{
   .hotspot {
     top: 40vh;
     left: 20%;
-    transform: translateY(-3rem);
+    transform: translateY(-6rem);
   }
 }
 
 /* iPhone SE */
 @media (max-width: 375px) {
   .hotspot {
-    top: 47vh;
+    top: 52vh;
     left: 20%;
   }
 }

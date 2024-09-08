@@ -22,7 +22,7 @@ if (isAuthenticated.value === true) {
   position: flex;
 }
 
-@media (min-width: 360px) and (max-height: 750px) {
+@media (max-width: 360px) and (max-height: 750px) {
   .story {
     position: fixed;
     top: 0;
