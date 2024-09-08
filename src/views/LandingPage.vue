@@ -1,10 +1,11 @@
 <template>
-  <div class="h-[83vh] flex justify-center xl:relative xl:h-full ">
-      <Story v-if="!isAuthenticated" class="flex 
-      h-full portrait:h-full portrait:md:h-screen 
-      portrait:md:-translate-y-[5.7vh] portrait:lg:-translate-y-28 max-[600px]:portrait:-translate-y-10
-      xl:w-3/4 2xl:w-2/3
-      "/>
+  <!-- <div class="h-[83vh] flex justify-center xl:relative xl:h-full"> -->
+  <div class="portrait:fixed flex h-full top-0 bg-red-100 overflow-auto">
+    <!-- class="flex h-full w-full xl:w-3/4 2xl:w-2/3" -->
+    <Story
+      v-if="!isAuthenticated"
+      class="flex flex-grow h-full w-full xl:w-3/4 2xl:w-2/3"
+    />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <notifications class="min-w-[50%]" />
-    <!-- Do not remove this -->
-    <img
+  <!-- Do not remove this -->
+  <img
     v-if="false"
     src="@assets/img/auth0-logo.png"
     alt="Hidden Image for Auth0 Login"

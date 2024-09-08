@@ -1,8 +1,6 @@
 <template>
   <img :src="src" alt="Scene One" />
-  <!-- portrait:md:xxx works for ipad mini -->
-  <div class="hotspot" 
-  @click="show = true">
+  <div class="hotspot" @click="show = true">
     <span
       class="w-12 h-12 md:w-20 md:h-20 xl:w-20 xl:h-20 lg:w-20 lg:h-20"
     ></span>
@@ -25,9 +23,9 @@ defineProps<{
 .hotspot {
   z-index: 2;
   position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* top: 50vh; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
 
   span {
     position: relative;
@@ -149,19 +147,44 @@ defineProps<{
   }
 }
 
-/* Mobile devices */
-@media (max-width: 767px) {
+/* Source for iPhone SE https://blisk.io/devices/details/iphone-se-2020 */
+
+/* Samsung Galaxy S8+ NOT WORKING */
+@media (max-width: 361px) and (max-height: 750px) {
   .hotspot {
     top: 50vh;
-    left: 25%;
+    left: 20%;
+  }
+}
+
+/* iPhone SE */
+@media (max-width: 375px) {
+  .hotspot {
+    top: 47vh;
+    left: 20%;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 450px) {
+  .hotspot {
+    top: 39vh;
+    left: 20%;
+  }
+}
+
+/* Mobile devices */
+@media (min-width: 451px) and (max-width: 767px) and (min-height: 750px) {
+  .hotspot {
+    top: 40vh;
+    left: 20%;
   }
 }
 
 /* iPads and Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hotspot {
-    top: 80vh;
-    left: 25%;
+    top: 65vh;
+    left: 20%;
   }
 }
 

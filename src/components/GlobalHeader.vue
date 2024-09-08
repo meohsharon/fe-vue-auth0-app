@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="absolute inset-y-0 right-8 w-fit md:right-0 pt-2 items-center"
-  >
+  <div class="absolute inset-y-0 right-8 w-fit md:right-0 pt-2 items-center">
     <!-- CONDITIONAL NAVIGATION -->
     <div v-if="isAuthenticated" class="flex items-center sm:mr-8">
       <TopNavigation v-show="showTopNavigation" />

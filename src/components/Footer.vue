@@ -1,8 +1,7 @@
 <template>
   <footer class="rounded border-t-2">
     <div
-      class="mx-auto max-w-7xl md:flex md:items-center md:justify-between
-      px-6 md:px-12 py-1 md:py-10 "
+      class="mx-auto max-w-7xl md:flex md:items-center md:justify-between px-6 md:px-12 py-1 md:py-10"
     >
       <div class="flex justify-center space-x-6 md:order-2">
         <a
