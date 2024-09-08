@@ -247,6 +247,7 @@ const conditionalMenuItem = [
           JSON.stringify(treeLocation.value),
         );
 
+        localStorage.setItem('updated_tree', "true")
         emit("map-click", treeLocation);
       }
     },
