@@ -55,12 +55,15 @@
         <ol-control-button @click="goToCurrentLocation" class="border-r-2 pr-4">
           My Current Location
         </ol-control-button>
-        <ol-control-button
-          @click="goToTreeLocation"
-          class="pl-4"
-          data-tooltip="Right-Click or Long-Press on Map to Plant Tree"
-        >
-          My Tree Location
+
+        <ol-control-button @click="goToTreeLocation" class="pl-4">
+          <div v-if="isAuthenticated === false">
+            <span v-tooltip="'Right-click or Long-press to plant a tree'"
+              >My Tree Location
+            </span>
+          </div>
+
+          <div v-else>My Tree Location</div>
         </ol-control-button>
       </div>
     </ol-control-bar>
@@ -69,6 +72,7 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
+import { useAuth0 } from "@auth0/auth0-vue";
 import { ObjectEvent } from "ol/Object";
 import { View, Map } from "ol";
 import { Item } from "ol-contextmenu";
@@ -76,13 +80,15 @@ import { Item } from "ol-contextmenu";
 import hereIcon from "@assets/img/you-are-here.png";
 import treeMarker from "@assets/img/tree-marker.png";
 
+const { isAuthenticated, user } = useAuth0();
+
 const mapRef = ref<{ map: Map }>(null);
 const zoom = ref(8);
 const center = ref([40, 40]);
 const projection = ref("EPSG:4326");
 const emit = defineEmits(["map-click"]);
 
-const treeLocation = ref(null);
+const treeLocation = ref(undefined);
 const view = ref<View | null>(null);
 
 let longPressTimer;
@@ -90,7 +96,7 @@ const LONG_PRESS_DURATION = 500; // milliseconds
 
 const handleMapClick = (event: any) => {
   // Handle normal click events here
-  console.log("Map clicked", event);
+  console.log("Map clicked");
 };
 
 const handleMouseUp = () => {
@@ -128,10 +134,9 @@ const handleLongPress = (event: any) => {
   if (!map) return;
 
   const pixel = map.getEventPixel(event);
-  const coordinate = map.getCoordinateFromPixel(pixel);
-
+  const coordinateFromMap = map.getCoordinateFromPixel(pixel);
   // Show context menu or perform long press action
-  showContextMenu(coordinate);
+  showContextMenu(coordinateFromMap);
 };
 
 const showContextMenu = (coordinate: number[]) => {
@@ -139,9 +144,11 @@ const showContextMenu = (coordinate: number[]) => {
   console.log("Show context menu at", coordinate);
 
   // Example: Plant a tree at the long-pressed location
-  treeLocation.value = coordinate;
-  localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
-  emit("map-click", treeLocation);
+  if (isAuthenticated.value === true) {
+    treeLocation.value = coordinate;
+    localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
+    emit("map-click", treeLocation);
+  }
 };
 
 onMounted(() => {
@@ -158,7 +165,12 @@ onMounted(() => {
   map.getViewport().addEventListener("mouseup", handleMouseUp);
 
   // get location
-  const markerPosition = localStorage.getItem("treeLocation");
+  const fromAuth0 = user?.value?.tree_location;
+  const fromStorage = localStorage.getItem("treeLocation");
+  console.log({ fromAuth0, fromStorage });
+  const markerPosition =
+    isAuthenticated.value === false ? fromStorage : fromAuth0;
+  console.log({ markerPosition });
 
   if (markerPosition) {
     treeLocation.value = JSON.parse(markerPosition);
@@ -204,26 +216,42 @@ const goToCurrentLocation = () => {
 };
 
 const contextMenuItems = ref<Item[]>([]);
-contextMenuItems.value = [
+const fixedMenuItems: Item[] = [
   {
     text: "Center map here",
     classname: "context-style", // add some CSS rules
     callback: (val) => {
+      console.log(val.coordinate);
       view.value?.setCenter(val.coordinate);
     },
   },
+  "-", // this is a separator
+];
+
+const conditionalMenuItem = [
   {
     text: "Plant A Tree",
     classname: "context-style",
     icon: treeMarker, // this can be relative or absolute
     callback: (val) => {
-      treeLocation.value = val.coordinate;
-      localStorage.setItem("treeLocation", JSON.stringify(treeLocation.value));
-      emit("map-click", treeLocation);
+      if (isAuthenticated.value === false) {
+        treeLocation.value = val.coordinate;
+        localStorage.setItem(
+          "treeLocation",
+          JSON.stringify(treeLocation.value),
+        );
+
+        emit("map-click", treeLocation);
+      }
     },
   },
-  "-", // this is a separator
 ];
+
+if (isAuthenticated.value === false) {
+  contextMenuItems.value = [...fixedMenuItems, ...conditionalMenuItem];
+} else {
+  contextMenuItems.value = [...fixedMenuItems];
+}
 </script>
 
 <style scoped>

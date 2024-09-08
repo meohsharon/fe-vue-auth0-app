@@ -21,6 +21,7 @@
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.5",
     "@kyvg/vue3-notification": "^3.3.0",
+    "@programic/vue3-tooltip": "^1.0.0",
     "@vueuse/core": "^11.0.1",
     "esm": "^3.2.25",
     "ol": "^10.1.0",
