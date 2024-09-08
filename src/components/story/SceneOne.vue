@@ -160,7 +160,7 @@ defineProps<{
 /* iPads and Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hotspot {
-    top: 67vh;
+    top: 80vh;
     left: 25%;
   }
 }
